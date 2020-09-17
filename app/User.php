@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','login', 'surname', 'lastname', 'phone_number', 'admin_id', 'master_id'
     ];
 
     /**
@@ -37,4 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function master()
+    {
+        return $this->belongsTo('App\Master');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo('App\Admin');
+    }
+
 }

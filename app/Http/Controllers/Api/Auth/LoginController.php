@@ -26,12 +26,13 @@ class LoginController extends Controller
             ], 401);
         }
 
-        $token = Auth::user()->createToken(config('app.name'));
+        $token = Auth::user()->createToken($request->email);
         $token->token->expires_at = Carbon::now()->addMonth();
 
         $token->token->save();
 
-        return response()->json([
+        return response()->json( [
+            'user' => Auth::user(),
             'token_type' => 'Bearer',
             'token' => $token->accessToken,
             'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
