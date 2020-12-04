@@ -17,12 +17,15 @@ class RegisterController extends Controller
     public function __invoke(RegisterFormRequest $request)
     {
         $user = User::create(array_merge(
-            $request->only('name', 'email', 'login', 'phone_number', 'surname', 'lastname'),
+            $request->only('email'),
             ['password' => bcrypt($request->password)],
         ));
 
+        // $accessToken = $user->createToken('authToken')->accessToken;
+
         return response()->json([
-            'message' => 'You were successfully registered. Use your email and password to sign in.'
+            'message' => 'You were successfully registered. Use your email and password to sign in.',
+            // 'access_token' => $accessToken
         ], 200);
     }
 }
