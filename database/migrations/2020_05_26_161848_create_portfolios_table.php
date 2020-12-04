@@ -20,9 +20,6 @@ class CreatePortfoliosTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('masters', function (Blueprint $table) {
-            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');;
-        });
     }
 
     /**

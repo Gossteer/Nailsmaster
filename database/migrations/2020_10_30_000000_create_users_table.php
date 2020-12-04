@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('phone_number')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->foreignId('master_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('set null');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

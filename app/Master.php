@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Master extends Model
@@ -10,13 +11,18 @@ class Master extends Model
         'portfolio_id', 'confirmation',
     ];
 
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('d-m-Y H:i');
+    }
+
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function portfolio()
     {
-        return $this->belongsTo('App\Portfolio');
+        return $this->hasOne('App\Portfolio');
     }
 }

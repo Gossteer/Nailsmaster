@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTimeInterface;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,14 +39,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('d-m-Y H:i');
+    }
+
     public function master()
     {
-        return $this->belongsTo('App\Master');
+        return $this->hasOne('App\Master');
     }
 
     public function admin()
     {
-        return $this->belongsTo('App\Admin');
+        return $this->hasOne('App\Admin');
     }
+
+    // public function toArray($request)
+    // {
+    //     return parent::toArray($request);
+    // }
 
 }

@@ -17,10 +17,6 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->timestamps();
         });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('set null');
-        });
     }
 
     /**

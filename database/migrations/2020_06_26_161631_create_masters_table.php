@@ -16,11 +16,8 @@ class CreateMastersTable extends Migration
         Schema::create('masters', function (Blueprint $table) {
             $table->id();
             $table->boolean('confirmation')->default('0');
+            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-        });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('master_id')->nullable()->constrained()->onDelete('set null');
         });
 
     }
