@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
-        Route::apiResource('index', 'IndexController');
+        Route::apiResource('place', 'MasterPointController');
         Route::apiResource('admin', 'AdminController');
     });
     Route::group(['namespace' => 'Auth'], function () {

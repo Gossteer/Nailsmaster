@@ -44,6 +44,7 @@ class UserSeeder extends Seeder
         $masterPoint->price = 50000000;
         $masterPoint->description = 'Буду делать хорошо и долго';
         $masterPoint->image = 'lol.page';
+        $masterPoint->save();
 
     }
 }
