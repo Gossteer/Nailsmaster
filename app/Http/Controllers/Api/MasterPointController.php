@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\MasterPoint;
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class MasterPointController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,17 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'users' => MasterPoint::all(),
-        ], 200);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -35,10 +42,21 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\MasterPoint  $masterPoint
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(MasterPoint $masterPoint)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\MasterPoint  $masterPoint
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(MasterPoint $masterPoint)
     {
         //
     }
@@ -47,10 +65,10 @@ class IndexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\MasterPoint  $masterPoint
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MasterPoint $masterPoint)
     {
         //
     }
@@ -58,10 +76,10 @@ class IndexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\MasterPoint  $masterPoint
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MasterPoint $masterPoint)
     {
         //
     }

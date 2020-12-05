@@ -24,13 +24,14 @@ class CreateUsersTable extends Migration
             $table->foreignId('master_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('admin_id')->nullable()->constrained()->onDelete('set null');
             $table->string('password');
+            $table->boolean('logical_delet')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
-        
+
     }
 
-    
+
 
     /**
      * Reverse the migrations.

@@ -25,4 +25,10 @@ class Master extends Model
     {
         return $this->hasOne('App\Portfolio');
     }
+
+    public function masterPoint()
+    {
+        return $this->hasOne('App\MasterPoint');
+    }
+
 }

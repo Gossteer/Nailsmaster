@@ -16,7 +16,14 @@ class CreateMasterPointsTable extends Migration
         Schema::create('master_points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('master_id')->constrained()->onDelete('CASCADE');
-            $table->string('name')
+            $table->string('name');
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->boolean('stasus')->default(0);
+            $table->integer('price')->default(0);
+            $table->text('description')->nullable();
+            $table->string('image');
+            $table->boolean('logical_delet')->default(0);
             $table->timestamps();
         });
     }

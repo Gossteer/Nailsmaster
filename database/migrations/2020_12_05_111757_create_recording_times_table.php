@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePortfoliosTable extends Migration
+class CreateRecordingTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePortfoliosTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('recording_times', function (Blueprint $table) {
             $table->id();
-            $table->string('login_instagram')->nullable();
-            $table->text('description');
+            $table->foreignId('master_point_id')->constrained()->onDelete('CASCADE');
+            $table->dateTime('time');
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -30,6 +29,6 @@ class CreatePortfoliosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('recording_times');
     }
 }

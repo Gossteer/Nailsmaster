@@ -17,6 +17,7 @@ class CreateMastersTable extends Migration
             $table->id();
             $table->boolean('confirmation')->default('0');
             $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
+            $table->boolean('logical_delet')->default(0);
             $table->timestamps();
         });
 
