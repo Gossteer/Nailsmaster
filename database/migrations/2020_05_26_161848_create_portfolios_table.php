@@ -15,7 +15,7 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('login_instagram')->nullable();
+            $table->string('login_instagram')->nullable()->unique();
             $table->text('description');
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();

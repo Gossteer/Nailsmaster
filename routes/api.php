@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::apiResource('place', 'MasterPointController');
         Route::apiResource('admin', 'AdminController');
+        Route::apiResource('master', 'MasterController');
     });
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController');
