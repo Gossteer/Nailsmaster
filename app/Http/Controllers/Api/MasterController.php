@@ -19,7 +19,9 @@ class MasterController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'masters' => User::whereNotNull('master_id')->join('masters', 'users.master_id', '=', 'masters.id')->with(['master'])->orderBy('masters.created_at', 'desc')->get(),
+        ], 200);
     }
 
     /**
@@ -29,14 +31,6 @@ class MasterController extends Controller
      */
     public function create(MasterCreateRequest $request)
     {
-        $portfolio = Portfolio::create($request->only('description', 'login_instagram'));
-        $master = Master::create(array_merge(
-            $request->only('confirmation'),
-            ['portfolio_id' => $portfolio->id],
-        ));
-        User::find(Auth::user()->id)->update(['master_id' => $master->id]);
-
-        return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id) ], 200);
 
     }
 
@@ -46,9 +40,16 @@ class MasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MasterCreateRequest $request)
     {
-        //
+        $portfolio = Portfolio::create($request->only('description', 'login_instagram'));
+        $master = Master::create(array_merge(
+            $request->only('confirmation'),
+            ['portfolio_id' => $portfolio->id],
+        ));
+        User::find(Auth::user()->id)->update(['master_id' => $master->id]);
+
+        return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id) ], 200);
     }
 
     /**

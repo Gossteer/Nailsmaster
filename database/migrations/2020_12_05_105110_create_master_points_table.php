@@ -23,6 +23,7 @@ class CreateMasterPointsTable extends Migration
             $table->integer('price')->default(0);
             $table->text('description')->nullable();
             $table->string('image');
+            $table->string('address');
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();
         });

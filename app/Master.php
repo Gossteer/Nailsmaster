@@ -18,12 +18,12 @@ class Master extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User');
     }
 
     public function portfolio()
     {
-        return $this->hasOne('App\Portfolio');
+        return $this->belongsTo('App\Portfolio');
     }
 
     public function masterPoint()

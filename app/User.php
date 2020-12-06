@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function master()
     {
-        return $this->hasOne('App\Master');
+        return $this->belongsTo('App\Master');
     }
 
     public function admin()

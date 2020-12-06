@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MasterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::apiResource('place', 'MasterPointController');
         Route::apiResource('admin', 'AdminController');
+        // Route::post('master', [MasterController::class, 'store'])->name('masterstore');
         Route::apiResource('master', 'MasterController');
     });
     Route::group(['namespace' => 'Auth'], function () {

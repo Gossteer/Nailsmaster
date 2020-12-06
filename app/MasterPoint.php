@@ -15,7 +15,8 @@ class MasterPoint extends Model
         'stasus',
         'price',
         'description',
-        'image'
+        'image',
+        'address'
     ];
 
     public function master()

@@ -41,6 +41,7 @@ class UserSeeder extends Seeder
         $masterPoint->latitude = 47.61733;
         $masterPoint->longitude = -122.1315288;
         $masterPoint->stasus = 1;
+        $masterPoint->address = "Лол";
         $masterPoint->price = 50000000;
         $masterPoint->description = 'Буду делать хорошо и долго';
         $masterPoint->image = 'lol.page';

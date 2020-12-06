@@ -20,6 +20,6 @@ class Portfolio extends Model
 
     public function master()
     {
-        return $this->belongsTo('App\Master');
+        return $this->hasOne('App\Master');
     }
 }
