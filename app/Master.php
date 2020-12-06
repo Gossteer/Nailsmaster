@@ -28,7 +28,7 @@ class Master extends Model
 
     public function masterPoint()
     {
-        return $this->hasOne('App\MasterPoint');
+        return $this->hasMany('App\MasterPoint');
     }
 
 }

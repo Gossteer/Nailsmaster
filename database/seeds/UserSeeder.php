@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         $portfolio = new Portfolio();
-        $portfolio->login_instagram = 'Sososhka';
-        $portfolio->description = 'Люблю ноготочки';
+        $portfolio->login_instagram = 'login_instagram';
+        $portfolio->description = 'description';
         $portfolio->save();
 
         $master = new Master();
@@ -37,14 +37,58 @@ class UserSeeder extends Seeder
 
         $masterPoint = new MasterPoint();
         $masterPoint->master_id = $master->id;
-        $masterPoint->name = 'Дорого, придётся сосать';
+        $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
         $masterPoint->latitude = 47.61733;
         $masterPoint->longitude = -122.1315288;
         $masterPoint->stasus = 1;
-        $masterPoint->address = "Лол";
+        $masterPoint->address = "Жуковский, улица Новых";
         $masterPoint->price = 50000000;
-        $masterPoint->description = 'Буду делать хорошо и долго';
-        $masterPoint->image = 'lol.page';
+        $masterPoint->description = 'Выбирай нас';
+        $masterPoint->image = 'images.page';
+        $masterPoint->save();
+
+        $portfolio = new Portfolio();
+        $portfolio->login_instagram = 'antonNoInstagram';
+        $portfolio->description = 'Стаж работы овер 100лет';
+        $portfolio->save();
+
+        $master = new Master();
+        $master->portfolio_id = $portfolio->id;
+        $master->confirmation = 1;
+        $master->save();
+
+        $user = new User();
+        $user->email = "admin1@admin";
+        $user->password = bcrypt("123");
+        $user->name = "Антон";
+        $user->surname = "Игнатьев";
+        $user->master_id = $master->id;
+        $user->lastname = "Александрович";
+        $user->phone_number = "+79256785354";
+        $user->save();
+
+        $masterPoint = new MasterPoint();
+        $masterPoint->master_id = $master->id;
+        $masterPoint->name = 'Не самые лучшие, но сойдёт';
+        $masterPoint->latitude = 49.61733;
+        $masterPoint->longitude = -120.1315288;
+        $masterPoint->stasus = 1;
+        $masterPoint->address = "Москва, улица Новых черёмушков";
+        $masterPoint->price = 6000000;
+        $masterPoint->description = 'Выбирай нас';
+        $masterPoint->image = 'images.page';
+        $masterPoint->save();
+
+        $masterPoint = new MasterPoint();
+        $masterPoint->master_id = $master->id;
+        $masterPoint->name = 'Красный лак';
+        $masterPoint->latitude = 45.61733;
+        $masterPoint->longitude = -125.1315288;
+        $masterPoint->stasus = 1;
+        $masterPoint->address = "Домодедов";
+        $masterPoint->price = 40000;
+        $masterPoint->description = 'Ваш лучший выбор';
+        $masterPoint->image = 'images.page';
         $masterPoint->save();
 
     }

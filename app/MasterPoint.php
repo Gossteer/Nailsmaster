@@ -36,7 +36,8 @@ class MasterPoint extends Model
 
     public function masterPortfolio()
     {
-        return $this->hasOneThrough('App\Portfolio', 'App\Master',
+        return $this->hasOneThrough('App\Master','App\Portfolio', 
+        'id',
         'portfolio_id', // Foreign key on cars table...
         'id', // Local key on mechanics table...
         'id');

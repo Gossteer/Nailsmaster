@@ -15,10 +15,11 @@ class MasterPointController extends Controller
      */
     public function index()
     {
-        $point = array('point' => MasterPoint::with(['master', 'masterPortfolio'])->get());
+        $poinst = MasterPoint::with(['master', 'masterPortfolio'])->get();
+        // $poinst = array('point' => MasterPoint::join('masters', 'master_points.master_id', '=', 'masters.id')->join('portfolios', 'masters.portfolio_id', '=', 'portfolios.id')->select('master_points.*', 'masters.*', 'portfolios.*')->get());
 
         return response()->json([
-            'points' => $point,
+            'points' => $poinst,
         ], 200);
     }
 

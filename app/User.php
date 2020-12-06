@@ -54,6 +54,15 @@ class User extends Authenticatable
         return $this->hasOne('App\Admin');
     }
 
+    public function masterPortfolio()
+    {
+        return $this->hasOneThrough('App\Portfolio', 'App\Master',
+        'portfolio_id', // Foreign key on cars table...
+        'id',
+        'id', // Local key on mechanics table...
+        'id');
+    }
+
     // public function toArray($request)
     // {
     //     return parent::toArray($request);
