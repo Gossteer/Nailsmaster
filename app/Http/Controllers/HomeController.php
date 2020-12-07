@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // $user = User::whereNotNull('master_id')->get()->sortByDesc('master.portfolio.created_at');
+
+        return view('home', ['masters' => User::whereNotNull('master_id')->get()->sortByDesc('master.portfolio.created_at')]);
     }
 }
