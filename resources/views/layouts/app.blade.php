@@ -19,13 +19,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
-=======
-    <link href="{{ asset('css/card.css') }}" rel="stylesheet">
-<<<<<<< HEAD
->>>>>>> 220f3b093a74dd148bf526a0b1c4abddcfa23b6f
-=======
->>>>>>> 220f3b093a74dd148bf526a0b1c4abddcfa23b6f
 
     @stack('styles')
 </head>
