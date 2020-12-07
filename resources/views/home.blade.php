@@ -2,6 +2,10 @@
 
 @section('content')
 
+{{-- @push('styles')
+    
+@endpush --}}
+
 <div class="container">
     <div class="row justify-content">
         @foreach ($masters as $master)
@@ -30,9 +34,13 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 @push('styles')
     <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 @endpush
+=======
+
+>>>>>>> 220f3b093a74dd148bf526a0b1c4abddcfa23b6f
 
 @endsection
 
