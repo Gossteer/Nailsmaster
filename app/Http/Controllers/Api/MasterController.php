@@ -20,7 +20,7 @@ class MasterController extends Controller
     public function index()
     {
         return response()->json([
-            'masters' => User::whereNotNull('master_id')->join('masters', 'users.master_id', '=', 'masters.id')->with(['master', 'masterPortfolio'])->orderBy('masters.created_at', 'desc')->get(),
+            'masters' => User::whereNotNull('master_id')->with('master.portfolio')->get()->sortByDesc('master.portfolio.created_at'),
         ], 200);
     }
 

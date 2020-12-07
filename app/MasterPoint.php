@@ -34,14 +34,14 @@ class MasterPoint extends Model
     //     return $this->belongsTo('App\Master')->using('App\Portfolio');
     // }
 
-    public function masterPortfolio()
-    {
-        return $this->hasOneThrough('App\Master','App\Portfolio', 
-        'id',
-        'portfolio_id', // Foreign key on cars table...
-        'id', // Local key on mechanics table...
-        'id');
-    }
+    // public function masterPortfolio()
+    // {
+    //     return $this->hasOneThrough('App\Portfolio','App\Master',
+    //     'portfolio_id', // Foreign key on cars table...
+    //     'id', // Local key on mechanics table...
+    //     'id');
+    // }
+
 
     protected function serializeDate(DateTimeInterface $date)
     {
