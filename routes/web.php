@@ -22,4 +22,8 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth', 'cafw']], function () {
+    Route::post('confirmMaster', 'MasterController@update')->name('confirmMaster');
+    Route::get('/', 'HomeController@index')->name('home');
+});
+

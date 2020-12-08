@@ -10,6 +10,7 @@
     <div class="row justify-content">
         @foreach ($masters as $master)
             <div class="col-md-4">
+                @csrf
                 <div class="cardForAdmin">
                     <div class="banner">
                     </div>
@@ -32,10 +33,10 @@
                         </div>
                         <div class="follow-info">
                             <h2><a><span>{{$master->master->masterPoint->count()}}</span><small>Точек</small></a></h2>
-                            <h2><a ><span>{{$master->master->confirmation ? 'Да' : 'Нет'}}</span><small>Подтверждение</small></a></h2>
+                            <h2><a ><span id="confirmationspan{{$master->id}}">{{$master->master->confirmation ? 'Да' : 'Нет'}}</span><small>Подтверждение</small></a></h2>
                         </div>
                         <div class="follow-btn">
-                            <button>{{$master->master->confirmation ? 'Отозвать' : 'Одобрить'}}</button>
+                            <button onclick="update(this, confirmationspan{{$master->id}})" data-masterid="{{$master->id}}" data-confirmation="{{ $master->master->confirmation ? 1 : 0}}">{{$master->master->confirmation ? 'Отозвать' : 'Одобрить'}}</button>
                         </div>
                     </div>
                     <div class="desc">Описание: {{$master->master->portfolio->description}}</div>
@@ -48,6 +49,45 @@
 @push('styles')
     <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 @endpush
+
+<script  type="application/javascript">
+function update(params, spantext) {
+    // alert(document.getElementsByName("_token")[0].value);
+    // var confirm = params.dataset.confirm;
+    $.ajax({
+        url: '{{ route('confirmMaster') }}',
+        type: "POST",
+        data: {confirmation:params.dataset.confirmation, id:params.dataset.masterid},
+        headers: {
+            'X-CSRF-Token': document.getElementsByName("_token")[0].value
+        },
+        success: function (data) {
+            // alert(data);
+            if (data) {
+                params.dataset.confirmation = data;
+                params.innerText = 'Отозвать';
+                spantext.innerText = 'Да';
+            } else {
+                params.dataset.confirmation = '0';
+                params.innerText = 'Одобрить';
+                spantext.innerText = 'Нет';
+            }
+            // $('#addArticle').modal('hide');
+            // $('#articles-wrap').removeClass('hidden').addClass('show');
+            // $('.alert').removeClass('show').addClass('hidden');
+            // var str = '<tr><td>'+data['id']+
+            // '</td><td><a href="/article/'+data['id']+'">'+data['title']+'</a>'+
+            // '</td><td><a href="/article/'+data['id']+'" class="delete" data-delete="'+data['id']+'">Удалить</a></td></tr>';
+            // $('.table > tbody:last').append(str);
+        },
+
+        error: function (msg) {
+            alert('Ошибка');
+        }
+
+    });
+}
+</script>
 
 @endsection
 

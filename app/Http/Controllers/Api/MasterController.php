@@ -52,6 +52,8 @@ class MasterController extends Controller
         return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id) ], 200);
     }
 
+
+
     /**
      * Display the specified resource.
      *

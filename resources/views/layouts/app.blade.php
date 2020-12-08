@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/6947640373.js" crossorigin="anonymous"></script>
+    @stack('script')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,8 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     @stack('styles')
+
 </head>
 <body>
     <div id="app">
