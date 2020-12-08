@@ -27,7 +27,7 @@ class LoginController extends Controller
         }
 
         $token = Auth::user()->createToken($request->email);
-        $token->token->expires_at = Carbon::now()->addMonth();
+        // $token->token->expires_at = Carbon::now()->addMonth();
 
         $token->token->save();
 

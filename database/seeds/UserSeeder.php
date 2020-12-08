@@ -4,6 +4,7 @@ use App\Master;
 use App\MasterPoint;
 use App\Portfolio;
 use App\User;
+use App\Admin;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -25,11 +26,15 @@ class UserSeeder extends Seeder
         $master->confirmation = 1;
         $master->save();
 
+        $admin = new Admin();
+        $admin->save();
+
         $user = new User();
         $user->email = "admin@admin";
         $user->password = bcrypt("123");
         $user->name = "Бокарев";
         $user->surname = "Стефан";
+        $user->admin_id = $admin->id;
         $user->master_id = $master->id;
         $user->lastname = "Динисович";
         $user->phone_number = "+79264785354";
