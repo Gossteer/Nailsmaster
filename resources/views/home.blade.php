@@ -18,7 +18,7 @@
                         <div class="opener"><span></span><span></span><span></span></div>
                     </div> --}}
                     <h2 class="name mt-3">{{($master->name . $master->surname . $master->lastname) ? ($master->name . ' ' . $master->surname . ' ' . $master->lastname) : $master->email}}</h2>
-                    <div class="title"><a href="https://www.instagram.com/{{$master->master->portfolio->login_instagram}}/">{{$master->master->portfolio->login_instagram}}</a> </div>
+                    <div class="title"><a href="https://www.instagram.com/{{$master->master->portfolio->login_instagram}}/" target="_blank">{{$master->master->portfolio->login_instagram}}</a> </div>
                     <div class="actions">
                         <div class="follow-info">
                             {{-- <h2><a href="#"><span>{{$master->master->masterPoint->count()}}</span><small>Точек</small></a></h2> --}}
