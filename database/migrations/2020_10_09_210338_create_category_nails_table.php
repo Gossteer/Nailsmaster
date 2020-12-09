@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMastersTable extends Migration
+class CreateCategoryNailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateMastersTable extends Migration
      */
     public function up()
     {
-        Schema::create('masters', function (Blueprint $table) {
+        Schema::create('category_nails', function (Blueprint $table) {
             $table->id();
-            $table->boolean('confirmation')->default('0');
-            $table->string('image')->nullable();
-            $table->foreignId('portfolio_id')->constrained()->onDelete('CASCADE');
-            $table->boolean('logical_delet')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +27,6 @@ class CreateMastersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('masters');
+        Schema::dropIfExists('category_nails');
     }
 }

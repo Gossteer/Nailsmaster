@@ -20,7 +20,6 @@ class CreateMasterPointsTable extends Migration
             $table->float('latitude');
             $table->float('longitude');
             $table->boolean('stasus')->default(0);
-            $table->integer('price')->default(0);
             $table->text('description')->nullable();
             $table->string('image');
             $table->string('address');

@@ -17,10 +17,14 @@ class CreateRecordingsTable extends Migration
             $table->id();
             $table->foreignId('recording_time_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('nails_point_id')->constrained()->onDelete('CASCADE');
             $table->boolean('confirmation_master')->default(0);
             $table->boolean('confirmation_customer')->default(0);
+            $table->boolean('confirmation_master_for_recording_time')->default(0);
+            $table->boolean('confirmation_message_masster')->default(0);
             $table->tinyInteger('stars')->nullable();
-            $table->text('feedback')->nullable();
+            $table->text('feedback_customer')->nullable();
+            $table->text('feedback_master')->nullable();
             $table->string('image')->nullable();
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();
