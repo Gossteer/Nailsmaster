@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Master extends Model
 {
     protected $fillable = [
-        'portfolio_id', 'confirmation',
+        'portfolio_id', 'confirmation', 'image'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
     {
-        return $date->format('d-m-Y H:i');
+        return $date->format('d.m.Y H:i');
     }
 
     public function user()

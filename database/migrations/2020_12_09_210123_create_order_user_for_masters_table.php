@@ -29,7 +29,7 @@ class CreateOrderUserForMastersTable extends Migration
             $table->dateTime('datetime_for_order_master')->nullable();
             $table->text('description_for_user');
             $table->text('description_for_master')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('category_nail_id')->constrained()->onDelete('CASCADE');
             $table->timestamps();
         });
     }

@@ -13,7 +13,6 @@ class MasterPoint extends Model
         'latitude',
         'longitude',
         'stasus',
-        'price',
         'description',
         'image',
         'address'
@@ -27,6 +26,11 @@ class MasterPoint extends Model
     public function recordingTime()
     {
         return $this->hasOne('App\RecordingTime');
+    }
+
+    public function nailsJobs()
+    {
+        return $this->hasMany('App\NailsJobs');
     }
 
     // public function masterPortfolio()
@@ -45,7 +49,7 @@ class MasterPoint extends Model
 
     protected function serializeDate(DateTimeInterface $date)
     {
-        return $date->format('d-m-Y H:i');
+        return $date->format('d.m.Y H:i');
     }
 
     // public function toArray($request)

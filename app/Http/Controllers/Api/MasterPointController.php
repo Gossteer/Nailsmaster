@@ -16,7 +16,7 @@ class MasterPointController extends Controller
     public function index()
     {
         return response()->json([
-            'points' => array('point' => MasterPoint::with('master.portfolio')->get()),
+            'points' => array('point' => MasterPoint::with('master.portfolio', 'nailsJobs')->get()),
         ], 200);
     }
 

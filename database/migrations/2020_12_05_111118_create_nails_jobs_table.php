@@ -17,8 +17,9 @@ class CreateNailsJobsTable extends Migration
             $table->id();
             $table->integer('price')->default(0);
             $table->string('image');
+            $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('category_nail_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('master_point_id')->constrained()->onDelete('CASCADE');
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();

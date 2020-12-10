@@ -5,6 +5,8 @@ use App\MasterPoint;
 use App\Portfolio;
 use App\User;
 use App\Admin;
+use App\CategoryNails;
+use App\NailsJobs;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -47,10 +49,35 @@ class UserSeeder extends Seeder
         $masterPoint->longitude = -122.1315288;
         $masterPoint->stasus = 1;
         $masterPoint->address = "Жуковский, улица Новых";
-        $masterPoint->price = 50000000;
         $masterPoint->description = 'Выбирай нас';
         $masterPoint->image = 'images.page';
         $masterPoint->save();
+
+        $category_nail = new CategoryNails();
+        $category_nail->name = 'Длинные';
+        $category_nail->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 400000;
+        $nails_job->image = 'image.jpg';
+        $nails_job->name = 'Длинные красивые ногти';
+        $nails_job->description = 'Чёрные, красивые ногти';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $category_nail = new CategoryNails();
+        $category_nail->name = 'Короткие';
+        $category_nail->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Коротки для детишек';
+        $nails_job->image = 'image.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
 
         $portfolio = new Portfolio();
         $portfolio->login_instagram = 'antonNoInstagram';
@@ -79,7 +106,6 @@ class UserSeeder extends Seeder
         $masterPoint->longitude = -120.1315288;
         $masterPoint->stasus = 1;
         $masterPoint->address = "Москва, улица Новых черёмушков";
-        $masterPoint->price = 6000000;
         $masterPoint->description = 'Выбирай нас';
         $masterPoint->image = 'images.page';
         $masterPoint->save();
@@ -91,7 +117,6 @@ class UserSeeder extends Seeder
         $masterPoint->longitude = -125.1315288;
         $masterPoint->stasus = 1;
         $masterPoint->address = "Домодедов";
-        $masterPoint->price = 40000;
         $masterPoint->description = 'Ваш лучший выбор';
         $masterPoint->image = 'images.page';
         $masterPoint->save();

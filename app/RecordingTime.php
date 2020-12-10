@@ -17,6 +17,11 @@ class RecordingTime extends Model
         return $this->belongsTo('App\MasterPoint');
     }
 
+    public function recording()
+    {
+        return $this->hasMany('App\Recording');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('d-m-Y H:i');
