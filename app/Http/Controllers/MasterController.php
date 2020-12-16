@@ -16,6 +16,7 @@ class MasterController extends Controller
 
     public function update(Request  $request)
     {
+        
         // User::find($request->id)->master->update(['confirmation' => $request->confirmation]);
         Master::find(User::find($request->id)->master_id)->update([
             'confirmation' => !$request->confirmation
