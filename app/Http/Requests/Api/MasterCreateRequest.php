@@ -31,6 +31,8 @@ class MasterCreateRequest extends FormRequest
             'login_instagram' => ['nullable', 'string', 'max:255', 'unique:portfolios'],
             'confirmation' => ['nullable', 'boolean'],
             'description' => ['required', 'string', 'min:6', 'max:500'],
+            'image' => 'required',
+            'image.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048'
         ];
     }
 }

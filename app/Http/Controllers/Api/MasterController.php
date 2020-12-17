@@ -9,6 +9,7 @@ use App\Portfolio;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MasterController extends Controller
 {
@@ -42,14 +43,25 @@ class MasterController extends Controller
      */
     public function store(MasterCreateRequest $request)
     {
+        if($request->hasfile('image')) {
+            //$name = $request->file('image')->getClientOriginalName();
+            $url = $request->file('image')->store('images/master');
+        }
+
+
+
         $portfolio = Portfolio::create($request->only('description', 'login_instagram'));
         $master = Master::create(array_merge(
             $request->only('confirmation'),
-            ['portfolio_id' => $portfolio->id],
+            [
+                'portfolio_id' => $portfolio->id,
+                'image' => $url
+        ],
         ));
+
         User::find(Auth::user()->id)->update(['master_id' => $master->id]);
 
-        return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id) ], 200);
+        return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id), 'lol' => Storage::url($url) ], 200);
     }
 
 

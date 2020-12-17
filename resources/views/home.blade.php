@@ -40,6 +40,7 @@
                         </div>
                     </div>
                     <div class="desc">Описание: {{$master->master->portfolio->description}}</div>
+                    <img src="" alt="альтернативный текст">
                 </div>
             </div>
         @endforeach
