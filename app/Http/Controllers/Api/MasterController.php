@@ -45,7 +45,8 @@ class MasterController extends Controller
     {
         if($request->hasfile('image')) {
             //$name = $request->file('image')->getClientOriginalName();
-            $url = $request->file('image')->store('images/master');
+            $url = Storage::putFile('public/images/master', $request->file('image'));
+            // $url = $request->file('image')->store('images/master');
         }
 
 
@@ -55,7 +56,7 @@ class MasterController extends Controller
             $request->only('confirmation'),
             [
                 'portfolio_id' => $portfolio->id,
-                'image' => $url
+                'image' => Storage::url($url)
         ],
         ));
 
