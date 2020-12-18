@@ -44,25 +44,25 @@ class MasterController extends Controller
     public function store(MasterCreateRequest $request)
     {
         if($request->hasfile('image')) {
-            //$name = $request->file('image')->getClientOriginalName();
-            $url = Storage::putFile('public/images/master', $request->file('image'));
-            // $url = $request->file('image')->store('images/master');
+            $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
         }
 
 
-
+        //Добавить транзакцию
+        //Статья про приватный доступ (если нет, то как-нибудь через мутаторы)
+        //мутатор или дополнительное поле с url?
         $portfolio = Portfolio::create($request->only('description', 'login_instagram'));
         $master = Master::create(array_merge(
             $request->only('confirmation'),
             [
                 'portfolio_id' => $portfolio->id,
-                'image' => Storage::url($url)
+                'image' => $url
         ],
         ));
 
         User::find(Auth::user()->id)->update(['master_id' => $master->id]);
 
-        return response()->json([ 'master' => $master->with(['portfolio'])->findOrFail($master->id), 'lol' => Storage::url($url) ], 200);
+        return response()->json(['master' => $master->with(['portfolio'])->findOrFail($master->id), 'lol' =>  Storage::getVisibility(Master::find($master->id)->image)], 200);
     }
 
 
@@ -109,6 +109,9 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        // return response()->json([ 'master' => ], 200);
+        // dd(Master::find($id)->image);
+        Storage::delete(Master::find($id)->image);
     }
 }
