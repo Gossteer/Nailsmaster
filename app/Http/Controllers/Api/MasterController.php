@@ -44,7 +44,8 @@ class MasterController extends Controller
     public function store(MasterCreateRequest $request)
     {
         if($request->hasfile('image')) {
-            $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
+            $url = Storage::disk('private')->put('images/master', $request->file('image'));
+            // $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
         }
 
 
@@ -62,7 +63,7 @@ class MasterController extends Controller
 
         User::find(Auth::user()->id)->update(['master_id' => $master->id]);
 
-        return response()->json(['master' => $master->with(['portfolio'])->findOrFail($master->id), 'lol' =>  Storage::getVisibility(Master::find($master->id)->image)], 200);
+        return response()->json(['master' => $master->with(['portfolio'])->findOrFail($master->id)], 200);
     }
 
 

@@ -40,7 +40,8 @@
                         </div>
                     </div>
                     <div class="desc">Описание: {{$master->master->portfolio->description}}</div>
-                    <img src="" alt="альтернативный текст">
+                    {{-- {{ \HTML::image('/storage/app/private/'.$master->master->image, "My logo") }} --}}
+                    {{-- <img src="{{URL::to('/storage/app/private/'.$master->master->image)}}" alt="альтернативный текст"> --}}
                 </div>
             </div>
         @endforeach

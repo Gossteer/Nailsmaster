@@ -3,6 +3,7 @@
 namespace App;
 
 use DateTimeInterface;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,22 @@ class Master extends Model
 
     // public function getImageAttribute($value)
     // {
-    //     return Storage::url($value);
+    //     $path = Storage::get(storage_path('/app/private/' . $value));
+    //     // $path = storage_path('app/uploads/ANY FOLDER NAME/' . $file);
+    //     // try {
+    //     //     $file = File::get($path);
+    //     //     $type = File::mimeType($path);
+    //     //     $response = Response::make($file, 200);
+    //     //     $response->header("Content-Type", $type);
+    //     //     return $response;
+    //     // } catch (FileNotFoundException $exception) {
+    //     //     abort(404);
+    //     // }
+    //     return $path;
+    //     // return file(storage_path('app/private/' . $value));
+    //     // return Storage::url($value);
+    //     // return returnFile($value);
+    //     // return response()->file('storage/app/private/'.$value);
     // }
 
 }
