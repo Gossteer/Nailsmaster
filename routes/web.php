@@ -23,6 +23,8 @@ use Illuminate\Http\Request;
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'cafw']], function () {
+    // Route::get('storage/{file}', 'Api\FileController@fileStorageServe')
+    //     ->where(['file' => '.*'])->name('storage.gallery.filee');
     Route::post('confirmMaster', 'MasterController@update')->name('confirmMaster');
     Route::get('/', 'HomeController@index')->name('home');
 });

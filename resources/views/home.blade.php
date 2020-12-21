@@ -44,6 +44,7 @@
                     {{-- <img src="{{URL::to('/storage/app/private/'.$master->master->image)}}" alt="альтернативный текст"> --}}
                 </div>
             </div>
+            {{-- <img src="{{$master->master->image ? route('storage.gallery.filee', ['file' => $master->master->image]) : ''}}" /> --}}
         @endforeach
     </div>
 </div>

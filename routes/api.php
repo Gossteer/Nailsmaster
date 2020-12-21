@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::apiResource('place', 'MasterPointController');
         Route::apiResource('admin', 'AdminController');
+        Route::get('storage/{file}', 'FileController@fileStorageServe')
+        ->where(['file' => '.*'])->name('storage.gallery.file');
         // Route::post('master', [MasterController::class, 'store'])->name('masterstore');
         Route::apiResource('master', 'MasterController');
     });
