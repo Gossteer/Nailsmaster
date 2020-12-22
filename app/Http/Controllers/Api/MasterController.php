@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\MasterCreateRequest;
 use App\Master;
-use App\Portfolio;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\FileController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\PortfolioController;
 use Illuminate\Support\Facades\Storage;
 
 class MasterController extends Controller
@@ -21,7 +20,7 @@ class MasterController extends Controller
     public function index()
     {
         return response()->json([
-            'masters' => User::whereNotNull('master_id')->with('master.portfolio')->get()->sortByDesc('master.portfolio.created_at'),
+            'masters' => UserController::getCustomUsers('master_id', 'master.portfolio', 'master.portfolio.created_at', true),
         ], 200);
     }
 
@@ -38,30 +37,28 @@ class MasterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Api\MasterCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(MasterCreateRequest $request)
     {
-        if($request->hasfile('image')) {
-            $url = Storage::disk('private')->put('images/master', $request->file('image'));
-            // $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
-        }
 
+        // if($request->hasfile('image')) {
+        //     $url = Storage::disk('private')->put('images/master', );
+        //     // $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
+        // }
 
         //Добавить транзакцию
-        //Статья про приватный доступ (если нет, то как-нибудь через мутаторы)
-        //мутатор или дополнительное поле с url?
-        $portfolio = Portfolio::create($request->only('description', 'login_instagram'));
+        $portfolio = PortfolioController::store($request);
         $master = Master::create(array_merge(
             $request->only('confirmation'),
             [
                 'portfolio_id' => $portfolio->id,
-                'image' => $url
+                'image' => FileController::fileStorage(config('filestorage.private.folders.images.master'), $request->file('image'),'private')
         ],
         ));
 
-        User::find(Auth::user()->id)->update(['master_id' => $master->id]);
+        UserController::setMaster($master->id);
 
         return response()->json(['master' => $master->with(['portfolio'])->findOrFail($master->id)], 200);
     }
@@ -97,7 +94,7 @@ class MasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MasterCreateRequest $request)
     {
         //
     }
@@ -110,9 +107,13 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
+        $master = Master::find($id);
+        //Добавить транзакцию
 
-        // return response()->json([ 'master' => ], 200);
-        // dd(Master::find($id)->image);
-        Storage::delete(Master::find($id)->image);
+        FileController::deleteFileStorage('private', $master ->image);
+        PortfolioController::delete($master->portfolio_id);
+        // UserController::setMaster(null);
+
+        return response()->json();
     }
 }
