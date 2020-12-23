@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    static function fileStorageServe(string $pathstorage, UploadedFile $file) {
+    static function fileStorageServe(string $file) {
         //Перенести пути в конфиг
 
         // if (!Storage::disk('local')->exists($filePath)){
@@ -16,7 +16,7 @@ class FileController extends Controller
         // }
         // return response()->file(storage_path('app'.DIRECTORY_SEPARATOR.($filePath)));
         // return response()->file(storage_path('/app/private/' . $file));
-        return response()->file(storage_path($pathstorage . $file));
+        return response()->file(storage_path(config('filestorage.private.path') . $file));
     }
 
 
