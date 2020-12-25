@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
         $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
         $masterPoint->latitude = 47.61733;
         $masterPoint->longitude = -122.1315288;
-        $masterPoint->stasus = 1;
+        $masterPoint->status = 1;
         $masterPoint->address = "Жуковский, улица Новых";
         $masterPoint->description = 'Выбирай нас';
         $masterPoint->image = 'images.page';
@@ -70,14 +70,7 @@ class UserSeeder extends Seeder
         $category_nail->name = 'Короткие';
         $category_nail->save();
 
-        $nails_job = new NailsJobs();
-        $nails_job->price = 2340000;
-        $nails_job->name = 'Коротки для детишек';
-        $nails_job->image = 'image.jpg';
-        $nails_job->description = 'Для детишек';
-        $nails_job->category_nail_id = $category_nail->id;
-        $nails_job->master_point_id = $masterPoint->id;
-        $nails_job->save();
+
 
         $portfolio = new Portfolio();
         $portfolio->login_instagram = 'antonNoInstagram';
@@ -104,22 +97,20 @@ class UserSeeder extends Seeder
         $masterPoint->name = 'Не самые лучшие, но сойдёт';
         $masterPoint->latitude = 49.61733;
         $masterPoint->longitude = -120.1315288;
-        $masterPoint->stasus = 1;
+        $masterPoint->status = 1;
         $masterPoint->address = "Москва, улица Новых черёмушков";
         $masterPoint->description = 'Выбирай нас';
         $masterPoint->image = 'images.page';
         $masterPoint->save();
 
-        $masterPoint = new MasterPoint();
-        $masterPoint->master_id = $master->id;
-        $masterPoint->name = 'Красный лак';
-        $masterPoint->latitude = 45.61733;
-        $masterPoint->longitude = -125.1315288;
-        $masterPoint->stasus = 1;
-        $masterPoint->address = "Домодедов";
-        $masterPoint->description = 'Ваш лучший выбор';
-        $masterPoint->image = 'images.page';
-        $masterPoint->save();
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Коротки для детишек';
+        $nails_job->image = 'image.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
 
     }
 }

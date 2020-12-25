@@ -29,7 +29,6 @@ class NailsJobs extends Model
         return $this->hasMany('App\Recording');
     }
 
-
     public function masterPoint()
     {
         return $this->belongsTo('App\MasterPoint');

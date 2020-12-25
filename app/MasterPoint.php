@@ -12,7 +12,7 @@ class MasterPoint extends Model
         'name',
         'latitude',
         'longitude',
-        'stasus',
+        'status',
         'description',
         'image',
         'address'

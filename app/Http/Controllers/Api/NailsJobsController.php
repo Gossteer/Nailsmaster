@@ -15,9 +15,15 @@ class NailsJobsController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'NailsJobs' => array('NailsJob' => NailsJobs::whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->with(['masterPoint' => function($query) {
+                    $query->select('id','latitude','longitude','address', 'master_id');
+                   }
+                  ])->get(['price','image','name','description', 'master_point_id'])),
+        ], 200);
     }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -21,7 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
-        Route::apiResource('place', 'MasterPointController');
+        // Route::apiResource('place', 'MasterPointController');
+        Route::apiResource('nailsjobs', 'NailsJobsController');
         Route::apiResource('admin', 'AdminController');
         Route::get('storage/{file}', 'FileController@fileStorageServe')
         ->where(['file' => '.*'])->name('storage.gallery.file');
