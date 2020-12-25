@@ -29,7 +29,7 @@ class MasterCreateRequest extends FormRequest
             // 'surname' => ['required', 'string', 'max:255'],
             // 'lastname' => ['nullable', 'string', 'max:255'],
             'confirmation' => ['nullable', 'boolean'],
-            'image' => 'required',
+            'image' => 'nullable',
             'image.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048'
         ];
     }

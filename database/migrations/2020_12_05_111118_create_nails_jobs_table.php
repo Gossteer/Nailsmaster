@@ -15,7 +15,7 @@ class CreateNailsJobsTable extends Migration
     {
         Schema::create('nails_jobs', function (Blueprint $table) {
             $table->id();
-            $table->integer('price')->default(0);
+            $table->double('price')->default(0);
             $table->string('image');
             $table->string('name');
             $table->text('description')->nullable();
