@@ -19,7 +19,7 @@ class NailsJobsController extends Controller
             'NailsJobs' => array('NailsJob' => NailsJobs::whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
             })->with(['masterPoint' => function($query) {
-                    $query->select('id','latitude','longitude','address', 'master_id');
+                    $query->select('id','latitude','longitude','address', 'master_id', 'image');
                    }
                   ])->get(['price','image','name','description', 'master_point_id'])),
         ], 200);
