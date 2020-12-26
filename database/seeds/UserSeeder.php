@@ -102,7 +102,7 @@ class UserSeeder extends Seeder
         $masterPoint->status = 1;
         $masterPoint->address = "Москва, улица Новых черёмушков";
         $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
+        $masterPoint->image = 'public/images/master/19449275071578985154.jpg';
         $masterPoint->save();
 
         $nails_job = new NailsJobs();
@@ -117,7 +117,7 @@ class UserSeeder extends Seeder
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
         $nails_job->name = 'Коротки';
-        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->image = 'public/images/master/novogodnego_manikyura.jpg';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
@@ -126,7 +126,7 @@ class UserSeeder extends Seeder
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
         $nails_job->name = 'Коротки';
-        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->image = 'public/images/master/vertical_full.jpg';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
