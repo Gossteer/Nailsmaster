@@ -22,12 +22,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         // Route::apiResource('place', 'MasterPointController');
-        Route::apiResource('nailsjobs', 'NailsJobsController');
+        Route::get('nailsjobs', 'NailsJobsController@index')->name('nailsjobs.index');
+        Route::get('master/{master}', 'MasterController@show')->name('master.show');
         Route::apiResource('admin', 'AdminController');
         Route::get('storage/{file}', 'FileController@fileStorageServe')
         ->where(['file' => '.*'])->name('storage.gallery.file');
         // Route::post('master', [MasterController::class, 'store'])->name('masterstore');
-        Route::apiResource('master', 'MasterController');
+        // Route::apiResource('master', 'MasterController');
     });
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController');

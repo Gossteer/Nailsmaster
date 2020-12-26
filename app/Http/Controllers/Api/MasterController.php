@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\MasterCreateRequest;
 use App\Master;
 use App\Http\Controllers\Api\FileController;
-use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PortfolioController;
-use Illuminate\Support\Facades\Storage;
 
 class MasterController extends Controller
 {
@@ -20,7 +18,7 @@ class MasterController extends Controller
     public function index()
     {
         return response()->json([
-            'masters' => UserController::getCustomUsers('master_id', 'master.portfolio', 'master.portfolio.created_at', true),
+            // 'masters' => UserController::getCustomUsers('master_id', 'master.portfolio', 'master.portfolio.created_at', true),
         ], 200);
     }
 
@@ -73,7 +71,11 @@ class MasterController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json([
+            'masters' => array('master' => Master::select('id','image','portfolio_id')->with(['user' => function ($query){
+                $query->select('id', 'name', 'master_id');
+            }])->where('confirmation', 1)->findOrFail($id)) ,
+        ], 200);
     }
 
     /**
