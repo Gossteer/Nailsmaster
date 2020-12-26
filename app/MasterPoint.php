@@ -58,8 +58,8 @@ class MasterPoint extends Model
     //     return parent::toArray($request);
     // }
 
-    // public function getImageAttribute($value)
-    // {
-    //     return Storage::url($value);
-    // }
+    public function getImageAttribute($value)
+    {
+        return Storage::url($value);
+    }
 }
