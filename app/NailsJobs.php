@@ -40,11 +40,11 @@ class NailsJobs extends Model
         return $this->belongsTo('App\CategoryNails');
     }
 
-    public function getImageAttribute($value)
-    {
+    // public function getImageAttribute($value)
+    // {
 
-        return Storage::url($value);
+    //     return Storage::url($value);
 
-    }
+    // }
 
 }

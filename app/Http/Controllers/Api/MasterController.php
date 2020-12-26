@@ -7,7 +7,6 @@ use App\Http\Requests\Api\MasterCreateRequest;
 use App\Master;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\PortfolioController;
-use Illuminate\Support\Facades\Storage;
 
 class MasterController extends Controller
 {
