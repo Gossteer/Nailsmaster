@@ -4,6 +4,7 @@ namespace App;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class MasterPoint extends Model
 {
@@ -56,4 +57,9 @@ class MasterPoint extends Model
     // {
     //     return parent::toArray($request);
     // }
+
+    public function getImageAttribute($value)
+    {
+        return Storage::url($value);
+    }
 }

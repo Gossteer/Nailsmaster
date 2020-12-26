@@ -7,6 +7,7 @@ use App\Http\Requests\Api\MasterCreateRequest;
 use App\Master;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\PortfolioController;
+use Illuminate\Support\Facades\Storage;
 
 class MasterController extends Controller
 {
@@ -42,8 +43,8 @@ class MasterController extends Controller
     {
 
         // if($request->hasfile('image')) {
-        //     $url = Storage::disk('private')->put('images/master', );
-        //     // $url = Storage::putFile('public/images/master', $request->file('image'), 'private');
+        //     // $url = Storage::disk('private')->put('images/master', );
+        //     $url = Storage::putFile('public/images/master', $request->file('image'));
         // }
 
         //Добавить транзакцию
@@ -109,13 +110,13 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
-        $master = Master::find($id);
-        //Добавить транзакцию
+        // $master = Master::find($id);
+        // //Добавить транзакцию
 
-        FileController::deleteFileStorage('private', $master ->image);
-        PortfolioController::delete($master->portfolio_id);
-        // UserController::setMaster(null);
+        // FileController::deleteFileStorage('private', $master ->image);
+        // PortfolioController::delete($master->portfolio_id);
+        // // UserController::setMaster(null);
 
-        return response()->json();
+        // return response()->json();
     }
 }

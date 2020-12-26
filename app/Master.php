@@ -33,24 +33,24 @@ class Master extends Model
         return $this->hasMany('App\MasterPoint');
     }
 
-    // public function getImageAttribute($value)
-    // {
-    //     $path = Storage::get(storage_path('/app/private/' . $value));
-    //     // $path = storage_path('app/uploads/ANY FOLDER NAME/' . $file);
-    //     // try {
-    //     //     $file = File::get($path);
-    //     //     $type = File::mimeType($path);
-    //     //     $response = Response::make($file, 200);
-    //     //     $response->header("Content-Type", $type);
-    //     //     return $response;
-    //     // } catch (FileNotFoundException $exception) {
-    //     //     abort(404);
-    //     // }
-    //     return $path;
-    //     // return file(storage_path('app/private/' . $value));
-    //     // return Storage::url($value);
-    //     // return returnFile($value);
-    //     // return response()->file('storage/app/private/'.$value);
-    // }
+    public function getImageAttribute($value)
+    {
+        // $path = Storage::get(storage_path('/app/private/' . $value));
+        // $path = storage_path('app/uploads/ANY FOLDER NAME/' . $file);
+        // try {
+        //     $file = File::get($path);
+        //     $type = File::mimeType($path);
+        //     $response = Response::make($file, 200);
+        //     $response->header("Content-Type", $type);
+        //     return $response;
+        // } catch (FileNotFoundException $exception) {
+        //     abort(404);
+        // }
+        // return $path;
+        // return file(storage_path('app/private/' . $value));
+        return Storage::url($value);
+        // return returnFile($value);
+        // return response()->file('storage/app/private/'.$value);
+    }
 
 }
