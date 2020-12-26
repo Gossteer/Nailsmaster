@@ -4,6 +4,7 @@ namespace App;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class NailsJobs extends Model
 {
@@ -37,6 +38,13 @@ class NailsJobs extends Model
     public function categoryNails()
     {
         return $this->belongsTo('App\CategoryNails');
+    }
+
+    public function getImageAttribute($value)
+    {
+
+        return Storage::url($value);
+
     }
 
 }
