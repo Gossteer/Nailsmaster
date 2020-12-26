@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
 
         $master = new Master();
         $master->portfolio_id = $portfolio->id;
+        $master->image = 'public/images/master/manikyur_ombre.png';
         $master->confirmation = 1;
         $master->save();
 
@@ -50,7 +51,7 @@ class UserSeeder extends Seeder
         $masterPoint->status = 1;
         $masterPoint->address = "Жуковский, улица Новых";
         $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'images.page';
+        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
         $masterPoint->save();
 
         $category_nail = new CategoryNails();
@@ -59,8 +60,8 @@ class UserSeeder extends Seeder
 
         $nails_job = new NailsJobs();
         $nails_job->price = 400000;
-        $nails_job->image = 'image.jpg';
-        $nails_job->name = 'Длинные красивые ногти';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->name = 'Длинные';
         $nails_job->description = 'Чёрные, красивые ногти';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
@@ -78,6 +79,7 @@ class UserSeeder extends Seeder
         $portfolio->save();
 
         $master = new Master();
+        $master->image = 'public/images/master/manikyur_ombre.png';
         $master->portfolio_id = $portfolio->id;
         $master->confirmation = 1;
         $master->save();
@@ -100,13 +102,31 @@ class UserSeeder extends Seeder
         $masterPoint->status = 1;
         $masterPoint->address = "Москва, улица Новых черёмушков";
         $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'images.page';
+        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
         $masterPoint->save();
 
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
-        $nails_job->name = 'Коротки для детишек';
-        $nails_job->image = 'image.jpg';
+        $nails_job->name = 'Коротки';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Коротки';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Коротки';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
