@@ -48,7 +48,7 @@ class Master extends Model
         // }
         // return $path;
         // return file(storage_path('app/private/' . $value));
-        return Storage::url($value);
+        return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
         // return returnFile($value);
         // return response()->file('storage/app/private/'.$value);
     }

@@ -43,7 +43,7 @@ class NailsJobs extends Model
     public function getImageAttribute($value)
     {
 
-        return Storage::url($value);
+        return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
 
     }
 
