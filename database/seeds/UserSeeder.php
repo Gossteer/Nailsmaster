@@ -7,6 +7,8 @@ use App\User;
 use App\Admin;
 use App\CategoryNails;
 use App\NailsJobs;
+use App\Recording;
+use App\RecordingTime;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -71,8 +73,6 @@ class UserSeeder extends Seeder
         $category_nail->name = 'Короткие';
         $category_nail->save();
 
-
-
         $portfolio = new Portfolio();
         $portfolio->login_instagram = 'antonNoInstagram';
         $portfolio->description = 'Стаж работы овер 100лет';
@@ -105,6 +105,20 @@ class UserSeeder extends Seeder
         $masterPoint->image = 'public/images/master/19449275071578985154.jpg';
         $masterPoint->save();
 
+        $recording_time = new RecordingTime();
+        $recording_time->time = date('Y-m-d H:i:s');
+        $recording_time->master_point_id = $masterPoint ->id;
+        $recording_time->save();
+
+        $user = new User();
+        $user->email = "user@user";
+        $user->password = bcrypt("123");
+        $user->name = "user";
+        $user->surname = "user";
+        $user->lastname = "user";
+        $user->phone_number = "+79264785355";
+        $user->save();
+
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
         $nails_job->name = 'Коротки';
@@ -113,6 +127,12 @@ class UserSeeder extends Seeder
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
         $nails_job->save();
+
+        $recording = new Recording();
+        $recording->user_id = $user->id;
+        $recording->nails_job_id = $nails_job->id;
+        $recording->recording_time_id = $recording_time->id;
+        $recording->save();
 
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
@@ -131,6 +151,8 @@ class UserSeeder extends Seeder
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
         $nails_job->save();
+
+
 
     }
 }

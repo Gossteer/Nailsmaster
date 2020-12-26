@@ -25,7 +25,8 @@ class CreateRecordingsTable extends Migration
             $table->tinyInteger('stars')->nullable();
             $table->text('feedback_customer')->nullable();
             $table->text('feedback_master')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image_customer')->nullable();
+            $table->string('image_master')->nullable();
             $table->boolean('logical_delet')->default(0);
             $table->timestamps();
         });

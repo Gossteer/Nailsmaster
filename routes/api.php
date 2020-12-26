@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Api'], function () {
         // Route::apiResource('place', 'MasterPointController');
         Route::get('nailsjobs', 'NailsJobsController@index')->name('nailsjobs.index');
         Route::get('master/{master}', 'MasterController@show')->name('master.show');
+        Route::post('userProfile', 'UserController@profileUser')->name('user.profile');
         Route::apiResource('admin', 'AdminController');
         Route::get('storage/{file}', 'FileController@fileStorageServe')
         ->where(['file' => '.*'])->name('storage.gallery.file');

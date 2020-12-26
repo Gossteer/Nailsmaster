@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Admin');
     }
 
+    public function recording()
+    {
+        return $this->hasOne('App\Recording');
+    }
+
     // public function toArray($request)
     // {
     //     return parent::toArray($request);

@@ -32,4 +32,24 @@ class UserController extends Controller
     {
        return User::whereNotNull($custom_id)->with($with)->get()->sortBy($sortBy, $options, $desc);
     }
+
+    public function profileUser()
+    {
+        return response()->json([
+            'profileUser' => array('Recordings' => User::select('id')->has('recording')->with([
+                'recording' => function($query) {
+                $query->select('id', 'user_id', 'recording_time_id', 'nails_job_id');
+               },
+               'recording.recordingTime' => function($query) {
+                $query->select('id', 'master_point_id', 'time');
+               },
+               'recording.recordingTime.masterPoint' => function($query) {
+                $query->select('id','latitude','longitude','address', 'master_id', 'image');
+               },
+               'recording.nailsJobs' => function($query) {
+                $query->select('id','price','image','name','description');
+               }
+               ])->findOrFail(Auth::user()->id), 'User' => User::select('id', 'name', 'surname' , 'lastname', 'phone_number', 'email')->find(Auth::user()->id)),
+        ], 200);
+    }
 }
