@@ -15,7 +15,7 @@ class CreateMastersTable extends Migration
     {
         Schema::create('masters', function (Blueprint $table) {
             $table->id();
-            $table->boolean('confirmation')->default('0');
+            $table->tinyInteger('status')->default('0');
             $table->string('image')->nullable();
             $table->foreignId('portfolio_id')->constrained()->onDelete('CASCADE');
             $table->boolean('logical_delet')->default(0);

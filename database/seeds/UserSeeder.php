@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         $master = new Master();
         $master->portfolio_id = $portfolio->id;
         $master->image = 'public/images/master/manikyur_ombre.png';
-        $master->confirmation = 1;
+        $master->status = 1;
         $master->save();
 
         $admin = new Admin();
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
         $master = new Master();
         $master->image = 'public/images/master/manikyur_ombre.png';
         $master->portfolio_id = $portfolio->id;
-        $master->confirmation = 1;
+        $master->status = 1;
         $master->save();
 
         $user = new User();

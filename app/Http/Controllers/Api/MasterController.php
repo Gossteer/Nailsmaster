@@ -49,7 +49,7 @@ class MasterController extends Controller
         //Добавить транзакцию
         $portfolio = PortfolioController::store($request);
         $master = Master::create(array_merge(
-            $request->only('confirmation'),
+            $request->only('status'),
             [
                 'portfolio_id' => $portfolio->id,
                 'image' => FileController::fileStorage(config('filestorage.private.folders.images.master'), $request->file('image'),'private')
@@ -74,7 +74,7 @@ class MasterController extends Controller
         return response()->json([
             'masters' => array('master' => Master::select('id','image','portfolio_id')->with(['user' => function ($query){
                 $query->select('id', 'name', 'master_id');
-            }])->where('confirmation', 1)->findOrFail($id)) ,
+            }])->where('status', 1)->findOrFail($id)) ,
         ], 200);
     }
 

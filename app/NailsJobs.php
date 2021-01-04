@@ -16,7 +16,8 @@ class NailsJobs extends Model
         'master_point_id',
         'description',
         'logical_delet',
-        'name'
+        'name',
+        'status'
     ];
 
 

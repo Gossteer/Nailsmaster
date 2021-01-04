@@ -16,8 +16,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        
-
         return response()->json([
             'users' => MasterPoint::with(['master', 'masterPortfolio'])->get(),
         ], 200);

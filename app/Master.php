@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class Master extends Model
 {
     protected $fillable = [
-        'portfolio_id', 'confirmation', 'image'
+        'portfolio_id', 'status', 'image'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

@@ -19,7 +19,7 @@ class CreateMasterPointsTable extends Migration
             $table->string('name');
             $table->float('latitude');
             $table->float('longitude');
-            $table->boolean('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->text('description')->nullable();
             $table->string('image');
             $table->string('address');
