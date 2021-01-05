@@ -49,6 +49,12 @@ class MasterAdminController extends Controller
         // return response()->file(storage_path('/app/private/' . $master->master->image));
     }
 
+    public function show(int $id)
+    {
+
+        return view('masters.mastershow', ['master' => Master::find($id), 'masterPoints' => Master::find($id)->masterPoint]);
+    }
+
     public function updateStatus(Request  $request)
     {
 

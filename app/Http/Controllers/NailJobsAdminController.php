@@ -50,12 +50,12 @@ class NailJobsAdminController extends Controller
 
     public function updateStatus(Request  $request)
     {
-
+        $status = ($request->status == 1 or $request->status == 3) ? 0 : 1;
         // User::find($request->id)->master->update(['confirmation' => $request->confirmation]);
         NailsJobs::find($request->id)->update([
-            'status' => !$request->status
+            'status' => $status
             ]);
 
-        return  !$request->status;
+        return  $status;
     }
 }

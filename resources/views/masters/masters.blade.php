@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content">
         @foreach ($masters as $master)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 @csrf
                 <div class="cardForAdmin">
                     <div class="banner" style="background-image: url({{$master->master->image}})">
@@ -17,7 +17,7 @@
                     {{-- <div class="menu">
                         <div class="opener"><span></span><span></span><span></span></div>
                     </div> --}}
-                    <h2 class="name mt-3">{{($master->name . $master->surname . $master->lastname) ? ($master->name . ' ' . $master->surname . ' ' . $master->lastname) : $master->email}}</h2>
+                    <a href="{{ route('masters.index.show', [$master->id]) }}"><h2 class="name mt-3">{{($master->name . $master->surname . $master->lastname) ? ($master->name . ' ' . $master->surname . ' ' . $master->lastname) : $master->email}}</h2></a>
                     <div class="title"><a href="https://www.instagram.com/{{$master->master->portfolio->login_instagram}}/" target="_blank">{{$master->master->portfolio->login_instagram}}</a> </div>
                     <div class="actions">
                         <div class="follow-info">

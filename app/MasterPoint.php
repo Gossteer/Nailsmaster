@@ -19,6 +19,8 @@ class MasterPoint extends Model
         'address'
     ];
 
+    protected $table = 'master_points';
+
     public function master()
     {
         return $this->belongsTo('App\Master');
@@ -31,7 +33,7 @@ class MasterPoint extends Model
 
     public function nailsJobs()
     {
-        return $this->hasMany('App\NailsJobs');
+        return $this->hasMany('App\NailsJobs', 'master_point_id', 'id');
     }
 
     // public function masterPortfolio()

@@ -20,6 +20,8 @@ class NailsJobs extends Model
         'status'
     ];
 
+    protected $table = 'nails_jobs';
+
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -33,7 +35,7 @@ class NailsJobs extends Model
 
     public function masterPoint()
     {
-        return $this->belongsTo('App\MasterPoint');
+        return $this->belongsTo('App\MasterPoint', 'master_point_id');
     }
 
     public function categoryNails()

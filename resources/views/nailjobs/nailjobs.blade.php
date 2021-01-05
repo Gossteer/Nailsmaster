@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content">
         @foreach ($nailjobs as $nailjob)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 @csrf
                 <div class="cardForAdmin">
                     <div class="banner" style="background-image: url({{$nailjob->image}})">
@@ -32,7 +32,7 @@
                             <h2 ><a ><span class="{{$nailjob->status ? '' : 'text-danger'}}" id="confirmationspan{{$nailjob->id}}">{{$nailjob->status ? 'Да' : 'Нет'}}</span><small >Подтверждение</small></a></h2>
                         </div>
                         <div class="follow-btn">
-                            <button onclick="update(this, confirmationspan{{$nailjob->id}})" data-nailjobid="{{$nailjob->id}}" data-status="{{ $nailjob->status ? 1 : 0}}">{{$nailjob->status ? 'Отозвать' : 'Одобрить'}}</button>
+                            <button onclick="update(this, confirmationspan{{$nailjob->id}})" data-nailjobid="{{$nailjob->id}}" data-status="{{$nailjob->status}}">{{$nailjob->status ? 'Отозвать' : 'Одобрить'}}</button>
                         </div>
                     </div>
                     <div class="desc">Описание: {{$nailjob->description}}</div>
@@ -62,7 +62,7 @@ function update(params, spantext) {
         },
         success: function (data) {
             // alert(data);
-            if (data) {
+            if (data == 1 || data == 3) {
                 params.dataset.status = data;
                 params.innerText = 'Отозвать';
                 spantext.innerText = 'Да';
