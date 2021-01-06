@@ -43,7 +43,6 @@
             </div>
             {{-- <img src="{{$master->master->image ? route('storage.gallery.filee', ['file' => $master->master->image]) : ''}}" /> --}}
         @endforeach
-
     </div>
     <div class="row justify-content">
         @foreach ($masterPoints as $masterpoint)
