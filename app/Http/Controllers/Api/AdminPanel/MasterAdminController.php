@@ -34,6 +34,7 @@ class MasterAdminController extends Controller
             User::select('id',
             'name',
             'master_id',
+            'created_at',
             'surname',
             'lastname',
             'phone_number',
