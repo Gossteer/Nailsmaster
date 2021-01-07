@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\AdminPanel;
 
-use App\MasterPoint;
+use App\Http\Controllers\Controller;
+use App\NailsJobs;
 use Illuminate\Http\Request;
 
-class MasterPointsAdminController extends Controller
+class NailJobsAdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,8 +16,10 @@ class MasterPointsAdminController extends Controller
     public function __construct()
     {
         $this->middleware('cafw');
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
+
+
 
     /**
      * Show the application dashboard.
@@ -41,8 +44,8 @@ class MasterPointsAdminController extends Controller
 
         // dd(json_decode($response1, true), $response1->json());
         // $master = User::find(1);
-
-        return view('masterpoints.masterpoints', ['masterpoints' => MasterPoint::all()->sortByDesc('created_at')]);
+        // dd(NailsJobs::all()->sortByDesc('created_at'));
+        return view('nailjobs.nailjobs', ['nailjobs' => NailsJobs::all()->sortByDesc('created_at')]);
         // return response()->file(storage_path('/app/private/' . $master->master->image));
     }
 
@@ -50,10 +53,10 @@ class MasterPointsAdminController extends Controller
     {
         $status = ($request->status == 1 or $request->status == 3) ? 0 : 1;
         // User::find($request->id)->master->update(['confirmation' => $request->confirmation]);
-        MasterPoint::find($request->id)->update([
+        NailsJobs::find($request->id)->update([
             'status' => $status
             ]);
 
-        return  $status ;
+        return  $status;
     }
 }

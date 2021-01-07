@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\AdminPanel;
 
-use App\NailsJobs;
+use App\Http\Controllers\Controller;
+use App\Master;
+use App\User;
 use Illuminate\Http\Request;
 
-class NailJobsAdminController extends Controller
+class MasterAdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -43,19 +45,25 @@ class NailJobsAdminController extends Controller
 
         // dd(json_decode($response1, true), $response1->json());
         // $master = User::find(1);
-        // dd(NailsJobs::all()->sortByDesc('created_at'));
-        return view('nailjobs.nailjobs', ['nailjobs' => NailsJobs::all()->sortByDesc('created_at')]);
+
+        return view('masters.masters', ['masters' => User::whereNotNull('master_id')->get()->sortByDesc('master.created_at')]);
         // return response()->file(storage_path('/app/private/' . $master->master->image));
+    }
+
+    public function show(int $id)
+    {
+
+        return view('masters.mastershow', ['master' => Master::find($id), 'masterPoints' => Master::find($id)->masterPoint]);
     }
 
     public function updateStatus(Request  $request)
     {
-        $status = ($request->status == 1 or $request->status == 3) ? 0 : 1;
+
         // User::find($request->id)->master->update(['confirmation' => $request->confirmation]);
-        NailsJobs::find($request->id)->update([
-            'status' => $status
+        Master::find($request->id)->update([
+            'status' => !$request->status
             ]);
 
-        return  $status;
+        return  !$request->status;
     }
 }
