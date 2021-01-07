@@ -30,8 +30,8 @@ class MasterAdminController extends Controller
     public function index()
     {
 
-        return response()->json([
-            'masters' => User::select('id',
+        return response()->json(
+            User::select('id',
             'name',
             'master_id',
             'surname',
@@ -45,10 +45,10 @@ class MasterAdminController extends Controller
                 $query->select('id', 'login_instagram', 'description');
                },
                'master.masterPoint' => function($query) {
-                $query->select('id','master_id')->count();
+                $query->select('id','master_id');
                }
-               ])->get()->sortByDesc('master.created_at'),
-        ], 200);
+               ])->get()->sortByDesc('master.created_at')
+        , 200);
     }
 
     public function show(int $id)
