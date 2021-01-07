@@ -16,7 +16,7 @@ class MasterAdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('cafw');
+        // $this->middleware('cafw');
         // $this->middleware('auth');
     }
 
@@ -30,24 +30,25 @@ class MasterAdminController extends Controller
     public function index()
     {
 
-
-        // $response = Http::post('http://nailsmasterstest.com.xsph.ru/api/login', [
-        //     'headers' => [
-        //         'Accept' => 'application/json',
-        //     ],
-        //     'email' => 'admin@admin',
-        //     'password' => '123'
-        // ]);
-
-        // //dd('Bearer '.$response['token'], $response['token_type']);
-
-        // $response1 = Http::withToken($response['token'])->get('http://nailsmasterstest.com.xsph.ru/api/place');
-
-        // dd(json_decode($response1, true), $response1->json());
-        // $master = User::find(1);
-
-        return view('masters.masters', ['masters' => User::whereNotNull('master_id')->get()->sortByDesc('master.created_at')]);
-        // return response()->file(storage_path('/app/private/' . $master->master->image));
+        return response()->json([
+            'masters' => User::select('id',
+            'name',
+            'master_id',
+            'surname',
+            'lastname',
+            'phone_number',
+            'email')->has('master')->with([
+                'master' => function($query) {
+                $query->select('id', 'created_at', 'status', 'portfolio_id');
+               },
+               'master.portfolio' => function($query) {
+                $query->select('id', 'login_instagram', 'description');
+               },
+               'master.masterPoint' => function($query) {
+                $query->select('id','master_id')->count();
+               }
+               ])->get()->sortByDesc('master.created_at'),
+        ], 200);
     }
 
     public function show(int $id)

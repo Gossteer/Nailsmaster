@@ -31,6 +31,9 @@ Route::group(['namespace' => 'Api'], function () {
         // Route::post('master', [MasterController::class, 'store'])->name('masterstore');
         // Route::apiResource('master', 'MasterController');
     });
+    Route::group(['namespace' => 'AdminPanel', 'middleware' => ['auth:api','cafa']], function () {
+        Route::get('masterindex', 'MasterAdminController@index');
+    });
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');
