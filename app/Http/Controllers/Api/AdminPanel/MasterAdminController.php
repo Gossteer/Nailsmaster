@@ -39,7 +39,7 @@ class MasterAdminController extends Controller
             'phone_number',
             'email')->has('master')->with([
                 'master' => function($query) {
-                $query->select('id', 'created_at', 'status', 'portfolio_id');
+                $query->select('id', 'created_at', 'status', 'portfolio_id', 'image');
                },
                'master.portfolio' => function($query) {
                 $query->select('id', 'login_instagram', 'description');
