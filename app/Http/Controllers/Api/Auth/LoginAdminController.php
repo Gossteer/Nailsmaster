@@ -20,7 +20,7 @@ class LoginAdminController extends Controller
         $credentials = $request->only('email', 'password');
 
 
-        if (!Auth::attempt($credentials) or Auth::user()->admin_id != 'null') {
+        if (!Auth::attempt($credentials) or Auth::user()->admin_id == null) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
