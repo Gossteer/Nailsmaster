@@ -118,7 +118,7 @@ body {
   transition: background-color 100ms ease-in-out;
 }
 .cardForAdmin .actions .follow-info h2 a span {
-  color: #1c9eff;
+  color:rgb(186, 84, 245);
   font-weight: bold;
   transform-origin: bottom;
   /* transform: scaleY(1.1); */
@@ -133,7 +133,7 @@ body {
   background-color: #f2f2f2;
 }
 .cardForAdmin .actions .follow-info h2 a:hover span {
-  color: #007ad6;
+  color: #e14eca;
 }
 .cardForAdmin .actions .follow-btn button {
   color: inherit;

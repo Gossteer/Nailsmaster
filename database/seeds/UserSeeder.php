@@ -119,9 +119,46 @@ class UserSeeder extends Seeder
         $user->phone_number = "+79264785355";
         $user->save();
 
+
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
-        $nails_job->name = 'Коротки';
+        $nails_job->name = 'Короткие5';
+        $nails_job->image = 'public/images/master/12344444.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие4';
+        $nails_job->image = 'public/images/master/1525686794_kvadrat.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие3';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23.50;
+        $nails_job->name = 'Короткие2';
+        $nails_job->image = 'public/images/master/5ca4c31b6e834197161028.jpeg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23000;
+        $nails_job->name = 'Короткие1';
         $nails_job->image = 'public/images/master/manikyur_ombre.png';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
@@ -136,7 +173,7 @@ class UserSeeder extends Seeder
 
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
-        $nails_job->name = 'Коротки';
+        $nails_job->name = 'Короткие';
         $nails_job->image = 'public/images/master/novogodnego_manikyura.jpg';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
@@ -145,7 +182,7 @@ class UserSeeder extends Seeder
 
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
-        $nails_job->name = 'Коротки';
+        $nails_job->name = 'Короткие';
         $nails_job->image = 'public/images/master/vertical_full.jpg';
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
