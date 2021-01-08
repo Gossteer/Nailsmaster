@@ -69,6 +69,142 @@ class UserSeeder extends Seeder
         $nails_job->master_point_id = $masterPoint->id;
         $nails_job->save();
 
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие5';
+        $nails_job->image = 'public/images/master/4435345.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие4';
+        $nails_job->image = 'public/images/master/4435345.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие3';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23.50;
+        $nails_job->name = 'Короткие2';
+        $nails_job->image = 'public/images/master/5ca4c31b6e834197161028.jpeg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23000;
+        $nails_job->name = 'Короткие1';
+        $nails_job->image = 'public/images/master/images.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие5';
+        $nails_job->image = 'public/images/master/12344444.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие4';
+        $nails_job->image = 'public/images/master/images.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие3';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23.50;
+        $nails_job->name = 'Короткие2';
+        $nails_job->image = 'public/images/master/5ca4c31b6e834197161028.jpeg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23000;
+        $nails_job->name = 'Короткие1';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие5';
+        $nails_job->image = 'public/images/master/unnamed.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие4';
+        $nails_job->image = 'public/images/master/9e1c2ca654405de31b8446eb965d05f2.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 2340000;
+        $nails_job->name = 'Короткие3';
+        $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23.50;
+        $nails_job->name = 'Короткие2';
+        $nails_job->image = 'public/images/master/unnamed.jpg';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
+        $nails_job = new NailsJobs();
+        $nails_job->price = 23000;
+        $nails_job->name = 'Короткие1';
+        $nails_job->image = 'public/images/master/9e1c2ca654405de31b8446eb965d05f2.png';
+        $nails_job->description = 'Для детишек';
+        $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->save();
+
         $category_nail = new CategoryNails();
         $category_nail->name = 'Короткие';
         $category_nail->save();
