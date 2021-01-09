@@ -16,7 +16,7 @@ class NailsJobsController extends Controller
     public function index()
     {
         return response()->json([
-            'NailsJobs' => array('NailsJob' => NailsJobs::whereHas('masterPoint', function ($query) {
+            'NailsJobs' => array('NailsJob' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
             })->whereHas('masterPoint.master', function ($query) {
                 $query->where('status', 1);

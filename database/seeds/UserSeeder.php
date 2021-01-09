@@ -66,6 +66,7 @@ class UserSeeder extends Seeder
         $nails_job->name = 'Длинные';
         $nails_job->description = 'Чёрные, красивые ногти';
         $nails_job->category_nail_id = $category_nail->id;
+        $nails_job->status = 1;
         $nails_job->master_point_id = $masterPoint->id;
         $nails_job->save();
 
@@ -76,6 +77,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -85,6 +87,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -94,6 +97,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -103,6 +107,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -112,6 +117,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -121,6 +127,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -130,6 +137,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -139,6 +147,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -148,6 +157,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -157,6 +167,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
 
@@ -167,6 +178,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -176,6 +188,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -185,6 +198,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -194,6 +208,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -203,6 +218,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $category_nail = new CategoryNails();
@@ -263,6 +279,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -272,6 +289,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -281,6 +299,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -290,6 +309,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
@@ -299,6 +319,7 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $recording = new Recording();
@@ -314,10 +335,12 @@ class UserSeeder extends Seeder
         $nails_job->description = 'Для детишек';
         $nails_job->category_nail_id = $category_nail->id;
         $nails_job->master_point_id = $masterPoint->id;
+        $nails_job->status = 1;
         $nails_job->save();
 
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
+        $nails_job->status = 1;
         $nails_job->name = 'Короткие';
         $nails_job->image = 'public/images/master/vertical_full.jpg';
         $nails_job->description = 'Для детишек';
