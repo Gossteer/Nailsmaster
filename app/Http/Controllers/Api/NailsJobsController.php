@@ -18,6 +18,8 @@ class NailsJobsController extends Controller
         return response()->json([
             'NailsJobs' => array('NailsJob' => NailsJobs::whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
+            })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
             })->with(['masterPoint' => function($query) {
                     $query->select('id','latitude','longitude','address', 'master_id', 'image');
                    }
