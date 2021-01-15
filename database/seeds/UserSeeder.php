@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         $admin->save();
 
         $user = new User();
-        $user->email = "admin@admin";
+        $user->email = "admin@admin.com";
         $user->password = bcrypt("123");
         $user->name = "Бокарев";
         $user->surname = "Стефан";
@@ -237,7 +237,7 @@ class UserSeeder extends Seeder
         $master->save();
 
         $user = new User();
-        $user->email = "admin1@admin";
+        $user->email = "admin1@admin.com";
         $user->password = bcrypt("123");
         $user->name = "Антон";
         $user->surname = "Игнатьев";
@@ -263,7 +263,7 @@ class UserSeeder extends Seeder
         $recording_time->save();
 
         $user = new User();
-        $user->email = "user@user";
+        $user->email = "user@user.com";
         $user->password = bcrypt("123");
         $user->name = "user";
         $user->surname = "user";
