@@ -30,7 +30,12 @@ class NailsJobs extends Model
 
     public function recording()
     {
-        return $this->hasMany('App\Recording', 'nails_job_id');
+        return $this->hasMany('App\Recording');
+    }
+
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
     }
 
     public function masterPoint()

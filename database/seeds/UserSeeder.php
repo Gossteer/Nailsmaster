@@ -6,6 +6,7 @@ use App\Portfolio;
 use App\User;
 use App\Admin;
 use App\CategoryNails;
+use App\Favorite;
 use App\NailsJobs;
 use App\Recording;
 use App\RecordingTime;
@@ -282,6 +283,11 @@ class UserSeeder extends Seeder
         $nails_job->status = 1;
         $nails_job->save();
 
+        $favorite = new Favorite();
+        $favorite->user_id = $user->id;
+        $favorite->nails_jobs_id = $nails_job->id;
+        $favorite->save();
+
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
         $nails_job->name = 'Короткие4';
@@ -324,7 +330,7 @@ class UserSeeder extends Seeder
 
         $recording = new Recording();
         $recording->user_id = $user->id;
-        $recording->nails_job_id = $nails_job->id;
+        $recording->nails_jobs_id = $nails_job->id;
         $recording->recording_time_id = $recording_time->id;
         $recording->save();
 

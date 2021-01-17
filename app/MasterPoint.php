@@ -31,6 +31,11 @@ class MasterPoint extends Model
         return $this->hasOne('App\RecordingTime');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function nailsJobs()
     {
         return $this->hasMany('App\NailsJobs', 'master_point_id', 'id');

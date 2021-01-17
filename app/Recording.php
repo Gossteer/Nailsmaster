@@ -12,7 +12,7 @@ class Recording extends Model
 
     public function nailsJobs()
     {
-        return $this->belongsTo('App\NailsJobs', 'nails_job_id');
+        return $this->belongsTo('App\NailsJobs');
     }
 
     public function recordingTime()

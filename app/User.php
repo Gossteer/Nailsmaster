@@ -59,6 +59,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Recording');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     // public function toArray($request)
     // {
     //     return parent::toArray($request);

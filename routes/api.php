@@ -21,19 +21,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
-        // Route::apiResource('place', 'MasterPointController');
         Route::get('nailsjobs', 'NailsJobsController@index')->name('nailsjobs.index');
         Route::get('master/{master}', 'MasterController@show')->name('master.show');
-        Route::post('userProfile', 'UserController@profileUser')->name('user.profile');
         Route::apiResource('admin', 'AdminController');
         Route::get('storage/{file}', 'FileController@fileStorageServe')
         ->where(['file' => '.*'])->name('storage.gallery.file');
-        // Route::post('master', [MasterController::class, 'store'])->name('masterstore');
-        // Route::apiResource('master', 'MasterController');
     });
-    Route::group(['namespace' => 'AdminPanel', 'middleware' => ['auth:api','cafa']], function () {
-        Route::get('masterindex', 'MasterAdminController@index');
+    Route::group(['middleware' => ['auth:api']], function () { // сделать проверку на юзера (только они могут делать эти штуки)
+        Route::post('favoritenailsJobs/{nailsJobs}', 'FavoriteController@storeNailsJobs')->name('favorite.nailsJobs');
+        Route::post('favoritemaster/{master}', 'FavoriteController@storeMaster')->name('favorite.master');
+        Route::delete('favoritedestroy/{id}', 'FavoriteController@destroy')->name('favorite.destroy');
+        Route::post('favoritemasterpoint/{masterpoint}', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
+        Route::post('userProfile', 'UserController@profileUser')->name('user.profile');
     });
+    // Route::group(['namespace' => 'AdminPanel', 'middleware' => ['auth:api','cafa']], function () {
+    //     Route::get('masterindex', 'MasterAdminController@index');
+    // });
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');

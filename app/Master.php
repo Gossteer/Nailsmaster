@@ -33,6 +33,11 @@ class Master extends Model
         return $this->hasMany('App\MasterPoint');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function getImageAttribute($value)
     {
         // $path = Storage::get(storage_path('/app/private/' . $value));

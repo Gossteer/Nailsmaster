@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\NailsJobs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NailsJobsController extends Controller
 {
@@ -20,10 +21,14 @@ class NailsJobsController extends Controller
                 $query->where('status', 1);
             })->whereHas('masterPoint.master', function ($query) {
                 $query->where('status', 1);
-            })->with(['masterPoint' => function($query) {
+            })->with([
+                'masterPoint' => function($query) {
                     $query->select('id','latitude','longitude','address', 'master_id', 'image');
-                   }
-                  ])->get(['id','price','image','name','description', 'master_point_id'])),
+                   },
+                'favorite' => function($query) {
+                    $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+                   },
+                ])->get(['id','price','image','name','description', 'master_point_id'])),
         ], 200);
     }
     /**
