@@ -61,7 +61,39 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function userFavorite()
+    public function userFavoriteNailsJobs()
+    {
+        return response()->json([
+            'Favorites' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->whereHas('favorite', function($query) {
+                $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+               })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
+            })->with([
+                'masterPoint' => function($query) {
+                    $query->select('id','latitude','longitude','address', 'master_id', 'image');
+                   },
+                ])->get(['id','price','image','name','description', 'master_point_id']),
+        ], 200);
+    }
+    public function userFavoriteMaster()
+    {
+        return response()->json([
+            'Favorites' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->whereHas('favorite', function($query) {
+                $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+               })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
+            })->with([
+                'masterPoint' => function($query) {
+                    $query->select('id','latitude','longitude','address', 'master_id', 'image');
+                   },
+                ])->get(['id','price','image','name','description', 'master_point_id']),
+        ], 200);
+    }
+    public function userFavoriteMasterPoint()
     {
         return response()->json([
             'Favorites' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
