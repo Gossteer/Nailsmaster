@@ -27,12 +27,16 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('storage/{file}', 'FileController@fileStorageServe')
         ->where(['file' => '.*'])->name('storage.gallery.file');
     });
-    Route::group(['middleware' => ['auth:api']], function () { // сделать проверку на юзера (только они могут делать эти штуки)
+    Route::group(['middleware' => ['auth:api']], function () {
+        // сделать проверку на юзера (только они могут делать эти штуки)
+        // сделать проверку если с мастера сняли статус или он удалил запись
         Route::post('favoritenailsJobs/{nailsJobs}', 'FavoriteController@storeNailsJobs')->name('favorite.nailsJobs');
         Route::post('favoritemaster/{master}', 'FavoriteController@storeMaster')->name('favorite.master');
         Route::delete('favoritedestroy/{id}', 'FavoriteController@destroy')->name('favorite.destroy');
         Route::post('favoritemasterpoint/{masterpoint}', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
         Route::post('userProfile', 'UserController@profileUser')->name('user.profile');
+        Route::post('userFavorite', 'UserController@userFavorite')->name('user.favorite');
+        Route::post('userRecordings', 'UserController@userRecordings')->name('user.recordings');
     });
     // Route::group(['namespace' => 'AdminPanel', 'middleware' => ['auth:api','cafa']], function () {
     //     Route::get('masterindex', 'MasterAdminController@index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\NailsJobs;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,22 +37,44 @@ class UserController extends Controller
     public function profileUser()
     {
         return response()->json([
-            'profileUser' => array(
-                'Recordings' => User::select('id')->has('recording')->with([
-                    'recording' => function($query) {
-                    $query->select('id', 'user_id', 'recording_time_id', 'nails_jobs_id');
-                },
-                'recording.recordingTime' => function($query) {
-                    $query->select('id', 'master_point_id', 'time');
-                },
-                'recording.recordingTime.masterPoint' => function($query) {
+            'User' => User::select('id', 'name', 'surname' , 'lastname', 'phone_number', 'email')->find(Auth::user()->id),
+        ], 200);
+    }
+
+    public function userRecordings()
+    {
+        return response()->json([
+            'Recordings' => User::select('id')->has('recording')->with([
+                'recording' => function($query) {
+                $query->select('id', 'user_id', 'recording_time_id', 'nails_jobs_id');
+            },
+            'recording.recordingTime' => function($query) {
+                $query->select('id', 'master_point_id', 'time');
+            },
+            'recording.recordingTime.masterPoint' => function($query) {
+                $query->select('id','latitude','longitude','address', 'master_id', 'image');
+            },
+            'recording.nailsJobs' => function($query) {
+                $query->select('id','price','image','name','description');
+            }
+            ])->findOrFail(Auth::user()->id)
+        ], 200);
+    }
+
+    public function userFavorite()
+    {
+        return response()->json([
+            'Favorites' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->whereHas('favorite', function($query) {
+                $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+               })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
+            })->with([
+                'masterPoint' => function($query) {
                     $query->select('id','latitude','longitude','address', 'master_id', 'image');
-                },
-                'recording.nailsJobs' => function($query) {
-                    $query->select('id','price','image','name','description');
-                }
-                ])->findOrFail(Auth::user()->id),
-                'User' => User::select('id', 'name', 'surname' , 'lastname', 'phone_number', 'email')->find(Auth::user()->id)),
+                   },
+                ])->get(['id','price','image','name','description', 'master_point_id']),
         ], 200);
     }
 }

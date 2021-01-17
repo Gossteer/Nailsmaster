@@ -288,6 +288,24 @@ class UserSeeder extends Seeder
         $favorite->nails_jobs_id = $nails_job->id;
         $favorite->save();
 
+        $favorite = new Favorite();
+        $favorite->user_id = $user->id;
+        $favorite->master_point_id = $masterPoint->id;
+        $favorite->save();
+
+        $user = new User();
+        $user->email = "user1@user1.com";
+        $user->password = bcrypt("123456789");
+        $user->name = "Человек";
+        $user->surname = "Клиентович";
+        $user->phone_number = "+79264784355";
+        $user->save();
+
+        $favorite = new Favorite();
+        $favorite->user_id = $user->id;
+        $favorite->nails_jobs_id = $nails_job->id;
+        $favorite->save();
+
         $nails_job = new NailsJobs();
         $nails_job->price = 2340000;
         $nails_job->name = 'Короткие4';
