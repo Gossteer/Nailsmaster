@@ -35,31 +35,31 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeNailsJobs(int $id)
+    public function storeNailsJobs(Request $request)
     {
         Favorite::create([
             'user_id' => Auth::user()->id,
-            'nails_jobs_id' => $id
+            'nails_jobs_id' => $request->id
         ]);
 
         return response()->json([], 200);
     }
 
-    public function storeMaster(int $id)
+    public function storeMaster(Request $request)
     {
         Favorite::create([
             'user_id' => Auth::user()->id,
-            'master_id' => $id
+            'master_id' => $request->id
         ]);
 
         return response()->json([], 200);
     }
 
-    public function storeMasterPoint(int $id)
+    public function storeMasterPoint(Request $request)
     {
         Favorite::create([
             'user_id' => Auth::user()->id,
-            'master_point_id' => $id
+            'master_point_id' =>$request->id
         ]);
 
         return response()->json([], 200);
