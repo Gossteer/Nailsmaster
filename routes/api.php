@@ -30,15 +30,15 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         // сделать проверку на юзера (только они могут делать эти штуки)
         // сделать проверку если с мастера сняли статус или он удалил запись
-        Route::post('favoritenailsJobs/{nailsJobs}', 'FavoriteController@storeNailsJobs')->name('favorite.nailsJobs');
-        Route::post('favoritemaster/{master}', 'FavoriteController@storeMaster')->name('favorite.master');
-        Route::delete('favoritedestroy/{id}', 'FavoriteController@destroy')->name('favorite.destroy');
-        Route::post('favoritemasterpoint/{masterpoint}', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
+        Route::post('favorite/favoritenailsJobs/{nailsJobs}', 'FavoriteController@storeNailsJobs')->name('favorite.nailsJobs');
+        Route::post('favorite/favoritemaster/{master}', 'FavoriteController@storeMaster')->name('favorite.master');
+        Route::delete('favorite/{id}', 'FavoriteController@destroy')->name('favorite.destroy');
+        Route::post('favorite/favoritemasterpoint/{masterpoint}', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
         Route::get('userProfile', 'UserController@profileUser')->name('user.profile');
-        Route::get('userFavorite/nailsjobs', 'UserController@userFavoriteNailsJobs')->name('user.nailsjobs');
-        Route::get('userFavorite/master', 'UserController@userFavoriteMaster')->name('user.master');
-        Route::get('userFavorite/masterpoint', 'UserController@userFavoriteMasterPoint')->name('user.masterpoint');
-        Route::get('userRecordings', 'UserController@userRecordings')->name('user.recordings');
+        Route::get('favorite/userFavorite/nailsjobs', 'UserController@userFavoriteNailsJobs')->name('user.nailsjobs');
+        Route::get('favorite/userFavorite/master', 'UserController@userFavoriteMaster')->name('user.master');
+        Route::get('favorite/userFavorite/masterpoint', 'UserController@userFavoriteMasterPoint')->name('user.masterpoint');
+        Route::get('favorite/userRecordings', 'UserController@userRecordings')->name('user.recordings');
     });
     // Route::group(['namespace' => 'AdminPanel', 'middleware' => ['auth:api','cafa']], function () {
     //     Route::get('masterindex', 'MasterAdminController@index');
