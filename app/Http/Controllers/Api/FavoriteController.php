@@ -42,7 +42,7 @@ class FavoriteController extends Controller
             'nails_jobs_id' => $request->id
         ]);
 
-        return response()->json([$favorite->id], 200);
+        return response()->json(['id' => $favorite->id], 200);
     }
 
     public function storeMaster(Request $request)
@@ -52,7 +52,7 @@ class FavoriteController extends Controller
             'master_id' => $request->id
         ]);
 
-        return response()->json([$favorite->id], 200);
+        return response()->json(['id' => $favorite->id], 200);
     }
 
     public function storeMasterPoint(Request $request)
@@ -62,7 +62,7 @@ class FavoriteController extends Controller
             'master_point_id' =>$request->id
         ]);
 
-        return response()->json([$favorite->id], 200);
+        return response()->json(['id' => $favorite->id], 200);
     }
 
     /**
