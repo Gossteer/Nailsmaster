@@ -37,32 +37,32 @@ class FavoriteController extends Controller
      */
     public function storeNailsJobs(Request $request)
     {
-        Favorite::create([
+        $favorite = Favorite::create([
             'user_id' => Auth::user()->id,
             'nails_jobs_id' => $request->id
         ]);
 
-        return response()->json([], 200);
+        return response()->json([$favorite->id], 200);
     }
 
     public function storeMaster(Request $request)
     {
-        Favorite::create([
+        $favorite = Favorite::create([
             'user_id' => Auth::user()->id,
             'master_id' => $request->id
         ]);
 
-        return response()->json([], 200);
+        return response()->json([$favorite->id], 200);
     }
 
     public function storeMasterPoint(Request $request)
     {
-        Favorite::create([
+        $favorite = Favorite::create([
             'user_id' => Auth::user()->id,
             'master_point_id' =>$request->id
         ]);
 
-        return response()->json([], 200);
+        return response()->json([$favorite->id], 200);
     }
 
     /**
@@ -105,9 +105,10 @@ class FavoriteController extends Controller
      * @param  \App\Favorite  $favorite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(Favorite $favorite)
     {
-        Favorite::find($id)->delete();
+        //Сделать мидлеваре на проверку чей фаворит
+        $favorite->delete();
 
         return response()->json([], 200);
     }

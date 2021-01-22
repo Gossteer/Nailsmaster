@@ -74,6 +74,9 @@ class UserController extends Controller
                 'masterPoint' => function($query) {
                     $query->select('id','latitude','longitude','address', 'master_id', 'image');
                    },
+                'favorite' => function($query) {
+                    $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+                    }
                 ])->get(['id','price','image','name','description', 'master_point_id']),
         ], 200);
     }
