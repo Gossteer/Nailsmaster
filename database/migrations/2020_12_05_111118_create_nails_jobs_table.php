@@ -20,6 +20,7 @@ class CreateNailsJobsTable extends Migration
             $table->tinyInteger('status')->default('0');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('instagram')->nullable();
             $table->foreignId('category_nail_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('master_point_id')->constrained()->onDelete('CASCADE');
             $table->boolean('logical_delet')->default(0);

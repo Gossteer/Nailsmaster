@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('nailsjobs/store-parser', 'Api\NailsJobsController@storeParser')->name('nailsjobs.storeparser');
+
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::get('nailsjobs', 'NailsJobsController@index')->name('nailsjobs.index');

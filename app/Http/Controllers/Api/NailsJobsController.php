@@ -52,6 +52,20 @@ class NailsJobsController extends Controller
         //
     }
 
+    public function storeParser(Request $request)
+    {
+        NailsJobs::create([
+            'instagram' => $request->instagram,
+            'name' => $request->instagram,
+            'image' => $request->image,
+            'category_nail_id' => 1,
+            'master_point_id' => 1,
+            'status' => 1
+        ]);
+
+        return response()->json();
+    }
+
     /**
      * Display the specified resource.
      *

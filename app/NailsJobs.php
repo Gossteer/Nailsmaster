@@ -17,7 +17,8 @@ class NailsJobs extends Model
         'description',
         'logical_delet',
         'name',
-        'status'
+        'status',
+        'instagram'
     ];
 
     protected $table = 'nails_jobs';
@@ -48,11 +49,11 @@ class NailsJobs extends Model
         return $this->belongsTo('App\CategoryNails');
     }
 
-    public function getImageAttribute($value)
-    {
+    // public function getImageAttribute($value)
+    // {
 
-        return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
+    //     return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
 
-    }
+    // }
 
 }
