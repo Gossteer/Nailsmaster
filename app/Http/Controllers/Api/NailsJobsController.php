@@ -69,15 +69,18 @@ class NailsJobsController extends Controller
 
     public function storeParser(Request $request)
     {
-        NailsJobs::create([
-            'instagram' => $request->instagram,
-            'name' => $request->instagram,
-            'image' => $request->image,
-            'category_nail_id' => 1,
-            'master_point_id' => 1,
-            'status' => 1,
-            'description' => $request->description
-        ]);
+        if (!NailsJobs::where('instagram', $request->instagram)->exists()) {
+            NailsJobs::create([
+                'instagram' => $request->instagram,
+                'name' => $request->instagram,
+                'image' => $request->image,
+                'category_nail_id' => 1,
+                'master_point_id' => 1,
+                'status' => 1,
+                'description' => $request->description
+            ]);
+        }
+
 
         return response()->json();
     }
