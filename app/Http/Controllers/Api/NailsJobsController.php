@@ -75,7 +75,8 @@ class NailsJobsController extends Controller
             'image' => $request->image,
             'category_nail_id' => 1,
             'master_point_id' => 1,
-            'status' => 1
+            'status' => 1,
+            'description' => $request->description
         ]);
 
         return response()->json();
