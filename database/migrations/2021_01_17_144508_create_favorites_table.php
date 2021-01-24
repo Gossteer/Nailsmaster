@@ -15,10 +15,10 @@ class CreateFavoritesTable extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('master_id')->nullable()->constrained();
-            $table->foreignId('master_point_id')->nullable()->constrained();
-            $table->foreignId('nails_jobs_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('CASCADE');
+            $table->foreignId('master_id')->nullable()->constrained()->onDelete('CASCADE');
+            $table->foreignId('master_point_id')->nullable()->constrained()->onDelete('CASCADE');
+            $table->foreignId('nails_jobs_id')->nullable()->constrained()->onDelete('CASCADE');
             $table->timestamps();
         });
     }
