@@ -16,11 +16,11 @@ class CreateNailsJobsTable extends Migration
         Schema::create('nails_jobs', function (Blueprint $table) {
             $table->id();
             $table->double('price')->default(0);
-            $table->string('image');
+            $table->text('image');
             $table->tinyInteger('status')->default('0');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->text('instagram')->nullable();
+            $table->string('instagram')->nullable();
             $table->foreignId('category_nail_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('master_point_id')->constrained()->onDelete('CASCADE');
             $table->boolean('logical_delet')->default(0);
