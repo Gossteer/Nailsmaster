@@ -14,6 +14,21 @@ class NailsJobsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexParser()
+    {
+        return response()->json([
+            'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'master_point_id')->where('status', 1)->whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
+            })->with([
+                'favorite' => function($query) {
+                    $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+                   },
+                ])->paginate(15)),
+        ], 200);
+    }
+
     public function index()
     {
         return response()->json([

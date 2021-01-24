@@ -23,7 +23,7 @@ Route::post('nailsjobs/store-parser', 'Api\NailsJobsController@storeParser')->na
 
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
-        Route::get('nailsjobs', 'NailsJobsController@index')->name('nailsjobs.index');
+        Route::get('nailsjobs', 'NailsJobsController@indexParser')->name('nailsjobs.indexParser');
         Route::get('master/{master}', 'MasterController@show')->name('master.show');
         Route::apiResource('admin', 'AdminController');
         Route::get('storage/{file}', 'FileController@fileStorageServe')

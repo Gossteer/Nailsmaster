@@ -353,25 +353,25 @@ class UserSeeder extends Seeder
         $user->save();
 
 
-        $nails_job = new NailsJobs();
-        $nails_job->price = 2340000;
-        $nails_job->name = 'Короткие5';
-        $nails_job->image = 'public/images/master/12344444.jpg';
-        $nails_job->description = 'Для детишек';
-        $nails_job->category_nail_id = $category_nail->id;
-        $nails_job->master_point_id = $masterPoint->id;
-        $nails_job->status = 1;
-        $nails_job->save();
+        // $nails_job = new NailsJobs();
+        // $nails_job->price = 2340000;
+        // $nails_job->name = 'Короткие5';
+        // $nails_job->image = 'public/images/master/12344444.jpg';
+        // $nails_job->description = 'Для детишек';
+        // $nails_job->category_nail_id = $category_nail->id;
+        // $nails_job->master_point_id = $masterPoint->id;
+        // $nails_job->status = 1;
+        // $nails_job->save();
 
-        $favorite = new Favorite();
-        $favorite->user_id = $user->id;
-        $favorite->nails_jobs_id = $nails_job->id;
-        $favorite->save();
+        // $favorite = new Favorite();
+        // $favorite->user_id = $user->id;
+        // $favorite->nails_jobs_id = $nails_job->id;
+        // $favorite->save();
 
-        $favorite = new Favorite();
-        $favorite->user_id = $user->id;
-        $favorite->master_point_id = $masterPoint->id;
-        $favorite->save();
+        // $favorite = new Favorite();
+        // $favorite->user_id = $user->id;
+        // $favorite->master_point_id = $masterPoint->id;
+        // $favorite->save();
 
         $user = new User();
         $user->email = "user1@user1.com";
@@ -381,10 +381,10 @@ class UserSeeder extends Seeder
         $user->phone_number = "+79264784355";
         $user->save();
 
-        $favorite = new Favorite();
-        $favorite->user_id = $user->id;
-        $favorite->nails_jobs_id = $nails_job->id;
-        $favorite->save();
+        // $favorite = new Favorite();
+        // $favorite->user_id = $user->id;
+        // $favorite->nails_jobs_id = $nails_job->id;
+        // $favorite->save();
 
         // $nails_job = new NailsJobs();
         // $nails_job->price = 2340000;
@@ -446,21 +446,21 @@ class UserSeeder extends Seeder
         // $nails_job->status = 1;
         // $nails_job->save();
 
-        $nails_job = new NailsJobs();
-        $nails_job->price = 23000;
-        $nails_job->name = 'Короткие1';
-        $nails_job->image = 'public/images/master/manikyur_ombre.png';
-        $nails_job->description = 'Для детишек';
-        $nails_job->category_nail_id = $category_nail->id;
-        $nails_job->master_point_id = $masterPoint->id;
-        $nails_job->status = 1;
-        $nails_job->save();
+        // $nails_job = new NailsJobs();
+        // $nails_job->price = 23000;
+        // $nails_job->name = 'Короткие1';
+        // $nails_job->image = 'public/images/master/manikyur_ombre.png';
+        // $nails_job->description = 'Для детишек';
+        // $nails_job->category_nail_id = $category_nail->id;
+        // $nails_job->master_point_id = $masterPoint->id;
+        // $nails_job->status = 1;
+        // $nails_job->save();
 
-        $recording = new Recording();
-        $recording->user_id = $user->id;
-        $recording->nails_jobs_id = $nails_job->id;
-        $recording->recording_time_id = $recording_time->id;
-        $recording->save();
+        // $recording = new Recording();
+        // $recording->user_id = $user->id;
+        // $recording->nails_jobs_id = $nails_job->id;
+        // $recording->recording_time_id = $recording_time->id;
+        // $recording->save();
 
         // $nails_job = new NailsJobs();
         // $nails_job->price = 2340000;
