@@ -17,6 +17,8 @@ class CreateNailsJobsTable extends Migration
             $table->id();
             $table->double('price')->default(0);
             $table->text('image');
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->string('name');
             $table->text('description')->nullable();
