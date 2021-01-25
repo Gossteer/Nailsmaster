@@ -25,9 +25,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::get('nailsjobs', 'NailsJobsController@indexParser')->name('nailsjobs.indexParser');
         Route::get('master/{master}', 'MasterController@show')->name('master.show');
-        Route::apiResource('admin', 'AdminController');
-        Route::get('storage/{file}', 'FileController@fileStorageServe')
-        ->where(['file' => '.*'])->name('storage.gallery.file');
+        // Route::apiResource('admin', 'AdminController');
+        Route::get('storage/{file}', 'FileController@fileStorageServe')->where(['file' => '.*'])->name('storage.gallery.file');
     });
     Route::group(['middleware' => ['auth:api']], function () {
         // сделать проверку на юзера (только они могут делать эти штуки)
@@ -49,6 +48,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');
         Route::post('loginadmin', 'LoginAdminController');
+        Route::post('login-master-admin', 'LoginMasterAdminController');
         Route::post('logout', 'LogoutController')->middleware('auth:api');
     });
 });
