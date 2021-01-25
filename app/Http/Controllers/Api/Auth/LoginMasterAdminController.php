@@ -19,7 +19,7 @@ class LoginMasterAdminController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials) or Auth::user()->master_id == null) {
+        if (!Auth::attempt($credentials) or Auth::user()->master_id == null or in_array([0,-1], Auth::user()->master->status)) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
@@ -32,7 +32,6 @@ class LoginMasterAdminController extends Controller
         $token->token->save();
 
         return response()->json( [
-            'master_id' => Auth::user()->master_id,
             'token_type' => 'Bearer',
             'token' => $token->accessToken,
             'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
