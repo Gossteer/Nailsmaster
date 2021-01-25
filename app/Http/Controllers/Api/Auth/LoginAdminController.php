@@ -18,19 +18,16 @@ class LoginAdminController extends Controller
     public function __invoke(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $user = Auth::user();
 
-        return response()->json( [
-            'token_type' => $user,
-        ], 200);
-        if (!Auth::attempt($credentials) or $user->admin_id == null) {
+
+        if (!Auth::attempt($credentials) or Auth::user()->admin_id == null) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
             ], 401);
         }
 
-        $token = $user->createToken($request->email);
+        $token = Auth::user()->createToken($request->email);
         // $token->token->expires_at = Carbon::now()->addMonth();
 
         $token->token->save();

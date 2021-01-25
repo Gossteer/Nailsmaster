@@ -18,22 +18,21 @@ class LoginMasterAdminController extends Controller
     public function __invoke(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $user = Auth::user();
 
-        if (!Auth::attempt($credentials) or $user->master_id == null) {
+        if (!Auth::attempt($credentials) or Auth::user()->master_id == null) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
             ], 401);
         }
 
-        $token = $user->createToken($request->email);
+        $token = Auth::user()->createToken($request->email);
         // $token->token->expires_at = Carbon::now()->addMonth();
 
         $token->token->save();
 
         return response()->json( [
-            'master_id' => $user->master_id,
+            'master_id' => Auth::user()->master_id,
             'token_type' => 'Bearer',
             'token' => $token->accessToken,
             'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
