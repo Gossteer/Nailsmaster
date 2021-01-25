@@ -32,7 +32,7 @@ class NailsJobsController extends Controller
     public function index()
     {
         return response()->json([
-            'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'master_point_id')->where('status', 1)->whereHas('masterPoint', function ($query) {
+            'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'master_point_id', 'latitude','longitude')->where('status', 1)->whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
             })->whereHas('masterPoint.master', function ($query) {
                 $query->where('status', 1);
