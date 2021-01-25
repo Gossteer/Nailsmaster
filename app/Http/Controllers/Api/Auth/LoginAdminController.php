@@ -20,6 +20,11 @@ class LoginAdminController extends Controller
         $credentials = $request->only('email', 'password');
         $user = Auth::user();
 
+        return response()->json( [
+            'token_type' => $user,
+            'token' => $token->accessToken,
+            'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
+        ], 200);
         if (!Auth::attempt($credentials) or $user->admin_id == null) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
