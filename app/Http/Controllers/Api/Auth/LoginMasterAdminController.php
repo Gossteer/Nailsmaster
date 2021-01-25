@@ -19,10 +19,10 @@ class LoginMasterAdminController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials) or Auth::user()->master_id == null or in_array([0,-1], Auth::user()->master->status)) {
+        if (!Auth::attempt($credentials) or Auth::user()->master_id == null or in_array(Auth::user()->master->status, [0,-1])) {
             return response()->json( [
                 'token_type' => Auth::user()->master_id,
-                'token' => in_array([0,-1], Auth::user()->master->status),
+                'token' =>  in_array(Auth::user()->master->status, [0,-1]),
                 'expires_at' => Auth::user()->master->status
             ], 200);
             return response()->json([
