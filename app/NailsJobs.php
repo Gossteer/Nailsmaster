@@ -18,7 +18,9 @@ class NailsJobs extends Model
         'logical_delet',
         'name',
         'status',
-        'instagram'
+        'instagram',
+        'latitude',
+        'longitude',
     ];
 
     protected $table = 'nails_jobs';

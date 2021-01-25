@@ -77,7 +77,9 @@ class NailsJobsController extends Controller
                 'category_nail_id' => 1,
                 'master_point_id' => 1,
                 'status' => 1,
-                'description' => $request->description
+                'description' => $request->description,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude
             ]);
         }
 
