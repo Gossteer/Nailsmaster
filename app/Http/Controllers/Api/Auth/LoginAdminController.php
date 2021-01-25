@@ -22,8 +22,6 @@ class LoginAdminController extends Controller
 
         return response()->json( [
             'token_type' => $user,
-            'token' => $token->accessToken,
-            'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
         ], 200);
         if (!Auth::attempt($credentials) or $user->admin_id == null) {
             return response()->json([
