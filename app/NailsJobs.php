@@ -21,6 +21,7 @@ class NailsJobs extends Model
         'instagram',
         'latitude',
         'longitude',
+        'address'
     ];
 
     protected $table = 'nails_jobs';

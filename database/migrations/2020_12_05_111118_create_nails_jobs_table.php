@@ -19,6 +19,7 @@ class CreateNailsJobsTable extends Migration
             $table->text('image');
             $table->float('latitude')->nullable();
             $table->float('longitude')->nullable();
+            $table->string('address')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->string('name');
             $table->text('description')->nullable();
