@@ -64,7 +64,7 @@ class UserController extends Controller
     public function userFavoriteNailsJobsParser()
     {
         return response()->json([
-            'Favorites' => NailsJobs::where('status', 1)->whereHas('masterPoint', function ($query) {
+            'Favorites' => NailsJobs::select('id','price','image','name','description', 'master_point_id')->where('status', 1)->whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
             })->whereHas('favorite', function($query) {
                 $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
@@ -74,11 +74,9 @@ class UserController extends Controller
                 'favorite' => function($query) {
                     $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
                     }
-                ])->get(['id','price','image','name','description', 'master_point_id']),
+                ])->paginate(15),
         ], 200);
     }
-
-
 
     public function userFavoriteNailsJobs()
     {
