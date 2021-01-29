@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('favorite/favoritemasterpoint', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
         Route::delete('favorite/{favorite}', 'FavoriteController@destroy')->name('favorite.destroy');
         Route::get('userProfile', 'UserController@profileUser')->name('user.profile');
-        Route::get('favorite/userFavorite/nailsjobs', 'UserController@userFavoriteNailsJobs')->name('user.nailsjobs');
+        Route::get('favorite/userFavorite/nailsjobs', 'UserController@userFavoriteNailsJobsParser')->name('user.nailsjobs');
         Route::get('favorite/userFavorite/master', 'UserController@userFavoriteMaster')->name('user.master');
         Route::get('favorite/userFavorite/masterpoint', 'UserController@userFavoriteMasterPoint')->name('user.masterpoint');
         Route::get('favorite/userRecordings', 'UserController@userRecordings')->name('user.recordings');
