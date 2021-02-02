@@ -32,7 +32,7 @@ class LoginController extends Controller
         $token->token->save();
 
         return response()->json( [
-            'user' => Auth::user(),
+            'User' => Auth::user(),
             'token_type' => 'Bearer',
             'token' => $token->accessToken,
             // 'expires_at' => Carbon::parse($token->token->expires_at)->toDateTimeString()
