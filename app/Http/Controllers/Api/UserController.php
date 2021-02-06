@@ -37,7 +37,7 @@ class UserController extends Controller
     public function profileUser()
     {
         return response()->json([
-            'User' => User::select('id', 'name', 'surname' , 'lastname', 'phone_number', 'email')->find(Auth::user()->id),
+            'User' => User::select('id', 'name', 'surname' , 'lastname', 'phone_number', 'email', 'created_at')->find(Auth::user()->id),
         ], 200);
     }
 
