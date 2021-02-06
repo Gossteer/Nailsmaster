@@ -79,8 +79,8 @@ class NailsJobsController extends Controller
                 'status' => 1,
                 'address' => $request->address,
                 'description' => $request->description,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude
+                'latitude' => (double) $request->latitude,
+                'longitude' => (double) $request->longitude
             ]);
         }
 
