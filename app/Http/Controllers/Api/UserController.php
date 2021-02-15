@@ -74,7 +74,7 @@ class UserController extends Controller
                 'favorite' => function($query) {
                     $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
                     }
-                ])->paginate(15),
+                ])->simplePaginate(15),
         )], 200);
     }
 

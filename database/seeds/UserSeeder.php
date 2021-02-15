@@ -46,20 +46,20 @@ class UserSeeder extends Seeder
         $user->phone_number = "+79264785354";
         $user->save();
 
-        $masterPoint = new MasterPoint();
-        $masterPoint->master_id = $master->id;
-        $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
-        $masterPoint->latitude = 47.61733;
-        $masterPoint->longitude = -122.1315288;
-        $masterPoint->status = 1;
-        $masterPoint->address = "Жуковский, улица Новых";
-        $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
-        $masterPoint->save();
+        // $masterPoint = new MasterPoint();
+        // $masterPoint->master_id = $master->id;
+        // $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
+        // $masterPoint->latitude = 47.61733;
+        // $masterPoint->longitude = -122.1315288;
+        // $masterPoint->status = 1;
+        // $masterPoint->address = "Жуковский, улица Новых";
+        // $masterPoint->description = 'Выбирай нас';
+        // $masterPoint->image = 'public/images/master/manikyur_ombre.png';
+        // $masterPoint->save();
 
-        $category_nail = new CategoryNails();
-        $category_nail->name = 'Длинные';
-        $category_nail->save();
+        // $category_nail = new CategoryNails();
+        // $category_nail->name = 'Длинные';
+        // $category_nail->save();
 
         // $nails_job = new NailsJobs();
         // $nails_job->price = 400000;
@@ -69,6 +69,10 @@ class UserSeeder extends Seeder
         // $nails_job->category_nail_id = $category_nail->id;
         // $nails_job->status = 1;
         // $nails_job->master_point_id = $masterPoint->id;
+        // $nails_job->instagram ='asdasd';
+        // $nails_job->latitude = 29.29;
+        // $nails_job->longitude = 245.67;
+        // $nails_job->address ='sadasd';
         // $nails_job->save();
 
         // $nails_job = new NailsJobs();
@@ -79,6 +83,10 @@ class UserSeeder extends Seeder
         // $nails_job->category_nail_id = $category_nail->id;
         // $nails_job->master_point_id = $masterPoint->id;
         // $nails_job->status = 1;
+        // $nails_job->instagram ='asdasd';
+        // $nails_job->latitude = 29.29;
+        // $nails_job->longitude = 245.67;
+        // $nails_job->address ='sadasd';
         // $nails_job->save();
 
         // $nails_job = new NailsJobs();
@@ -89,6 +97,10 @@ class UserSeeder extends Seeder
         // $nails_job->category_nail_id = $category_nail->id;
         // $nails_job->status = 1;
         // $nails_job->master_point_id = $masterPoint->id;
+        // $nails_job->instagram ='asdasd';
+        // $nails_job->latitude = 29.29;
+        // $nails_job->longitude = 245.67;
+        // $nails_job->address ='sadasd';
         // $nails_job->save();
 
         // $nails_job = new NailsJobs();
@@ -99,6 +111,10 @@ class UserSeeder extends Seeder
         // $nails_job->category_nail_id = $category_nail->id;
         // $nails_job->master_point_id = $masterPoint->id;
         // $nails_job->status = 1;
+        // $nails_job->instagram ='asdasd';
+        // $nails_job->latitude = 29.29;
+        // $nails_job->longitude = 245.67;
+        // $nails_job->address ='sadasd';
         // $nails_job->save();
 
         // $nails_job = new NailsJobs();
