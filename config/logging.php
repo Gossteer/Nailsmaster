@@ -99,6 +99,30 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'authlogin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/authlogin.log'),
+            'level' => 'info'
+        ],
+
+        'authregister' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/authregister.log'),
+            'level' => 'info'
+        ],
+
+        'nailsjobsloading' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/nailsjobsloading.log'),
+            'level' => 'info'
+        ],
+
+        'redirecttoinstagram' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/redirecttoinstagram.log'),
+            'level' => 'info'
+        ]
     ],
 
 ];

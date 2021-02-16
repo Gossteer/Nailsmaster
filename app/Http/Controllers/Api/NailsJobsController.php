@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\NailsJobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class NailsJobsController extends Controller
 {
@@ -16,6 +17,8 @@ class NailsJobsController extends Controller
      */
     public function indexParser()
     {
+        Log::channel('nailsjobsloading')->info('Пользователь выгрузил NailsJobs', ['user_id' => Auth::user()->id]);
+
         return response()->json([
             'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'address', 'master_point_id', 'latitude','longitude')->where('status', 1)->whereHas('masterPoint', function ($query) {
                 $query->where('status', 1);
@@ -45,6 +48,17 @@ class NailsJobsController extends Controller
                    },
                 ])->simplePaginate(15)),
         ], 200);
+    }
+
+
+    public function redirectToInstagram(\App\Http\Requests\Api\LogRedirectNailsJobsRequest $request)
+    {
+        Log::channel('redirecttoinstagram')->info('Пользователь перешёл на:', [
+            'user_id' => Auth::user()->id,
+            'nails_jobs_id' => (int) $request->nails_jobs_id
+            ]);
+
+        return response()->json([], 200);
     }
     /**
      * Show the form for creating a new resource.

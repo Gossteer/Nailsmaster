@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\RegisterFormRequest;
 use App\User;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -29,6 +30,8 @@ class RegisterController extends Controller
         $token = $user->createToken($request->email);
         // $token->token->expires_at = Carbon::now()->addMonth();
         $token->token->save();
+
+        Log::channel('authregister')->info('Регистрация пользователя', ['user_id' => $user->id]);
 
         return response()->json([
             'message' => 'You were successfully registered. Use your email and password to sign in.',

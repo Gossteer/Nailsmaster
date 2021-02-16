@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         // сделать проверку на юзера (только они могут делать эти штуки)
         // сделать проверку если с мастера сняли статус или он удалил запись
+        Route::post('nailsjobs-redirect-to-instagram', 'NailsJobsController@redirectToInstagram')->name('nailsjobs.redirectToInstagram');
         Route::post('favorite/favoritenailsJobs', 'FavoriteController@storeNailsJobs')->name('favorite.nailsJobs');
         Route::post('favorite/favoritemaster', 'FavoriteController@storeMaster')->name('favorite.master');
         Route::post('favorite/favoritemasterpoint', 'FavoriteController@storeMasterPoint')->name('favorite.masterpoint');
