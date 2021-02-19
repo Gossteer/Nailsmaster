@@ -34,7 +34,7 @@ class RegisterController extends Controller
         $token->token->save();
 
         $logger->log('info', 'Регистрация пользователя', [
-            'type_id' => 'login',
+            'type_id' => 'register',
             'user_id' => $user->id
             ]);
 

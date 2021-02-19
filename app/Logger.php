@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Logger extends Model
@@ -21,5 +22,10 @@ class Logger extends Model
     public function nailsJobs()
     {
         return $this->belongsTo('App\NailsJobs');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('d-m-Y H:i');
     }
 }
