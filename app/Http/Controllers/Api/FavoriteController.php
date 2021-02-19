@@ -6,6 +6,7 @@ use App\Favorite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psr\Log\LoggerInterface;
 
 class FavoriteController extends Controller
 {
@@ -35,7 +36,7 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeNailsJobs(Request $request)
+    public function storeNailsJobs(Request $request, LoggerInterface $logger)
     {
         $user_id = Auth::user()->id;
 
@@ -44,7 +45,7 @@ class FavoriteController extends Controller
             'nails_jobs_id' => $request->id
         ]);
 
-        $this->logger->log('info', 'Пользователь добавил ногти в избранное', [
+        $logger->log('info', 'Пользователь добавил ногти в избранное', [
             'type_id' => 'AddFavoriteNailsJobs',
             'user_id' => Auth::user()->id,
             'nails_jobs_id' => (int) $user_id
