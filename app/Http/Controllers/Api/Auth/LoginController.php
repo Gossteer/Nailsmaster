@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         // Log::channel('authlogin')->info('Авторизация пользователя', ['user_id' => Auth::user()->id]);
         $logger->log('info', 'Авторизация пользователя', [
-            'type_id' => 'login',
+            'type_id' => 'Login',
             'user_id' => Auth::user()->id
             ]);
 

@@ -37,10 +37,18 @@ class FavoriteController extends Controller
      */
     public function storeNailsJobs(Request $request)
     {
+        $user_id = Auth::user()->id;
+
         $favorite = Favorite::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => $user_id ,
             'nails_jobs_id' => $request->id
         ]);
+
+        $this->logger->log('info', 'Пользователь добавил ногти в избранное', [
+            'type_id' => 'AddFavoriteNailsJobs',
+            'user_id' => Auth::user()->id,
+            'nails_jobs_id' => (int) $user_id
+            ]);
 
         return response()->json(['id' => $favorite->id], 200);
     }

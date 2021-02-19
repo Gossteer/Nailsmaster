@@ -37,7 +37,7 @@ class NailsJobsController extends Controller
             ])->simplePaginate(15));
 
         $this->logger->log('info', 'Пользователь выгрузил NailsJobs', [
-            'type_id' => 'loadingnailsjobs',
+            'type_id' => 'LoadingNailsJobs',
             'user_id' => Auth::user()->id
             ]);
 
@@ -72,7 +72,7 @@ class NailsJobsController extends Controller
         //     'nails_jobs_id' => (int) $request->nails_jobs_id
         //     ]);
         $this->logger->log('info', 'Пользователь перешёл к профилю мастера в инстаграм', [
-            'type_id' => 'redirecttoinstagram',
+            'type_id' => 'RedirectToInstagram',
             'user_id' => Auth::user()->id,
             'nails_jobs_id' => (int) $request->nails_jobs_id
             ]);
