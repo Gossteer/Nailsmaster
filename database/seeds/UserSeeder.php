@@ -46,20 +46,20 @@ class UserSeeder extends Seeder
         $user->phone_number = "+79264785354";
         $user->save();
 
-        // $masterPoint = new MasterPoint();
-        // $masterPoint->master_id = $master->id;
-        // $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
-        // $masterPoint->latitude = 47.61733;
-        // $masterPoint->longitude = -122.1315288;
-        // $masterPoint->status = 1;
-        // $masterPoint->address = "Жуковский, улица Новых";
-        // $masterPoint->description = 'Выбирай нас';
-        // $masterPoint->image = 'public/images/master/manikyur_ombre.png';
-        // $masterPoint->save();
+        $masterPoint = new MasterPoint();
+        $masterPoint->master_id = $master->id;
+        $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
+        $masterPoint->latitude = 47.61733;
+        $masterPoint->longitude = -122.1315288;
+        $masterPoint->status = 1;
+        $masterPoint->address = "Жуковский, улица Новых";
+        $masterPoint->description = 'Выбирай нас';
+        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
+        $masterPoint->save();
 
-        // $category_nail = new CategoryNails();
-        // $category_nail->name = 'Длинные';
-        // $category_nail->save();
+        $category_nail = new CategoryNails();
+        $category_nail->name = 'Длинные';
+        $category_nail->save();
 
         // $nails_job = new NailsJobs();
         // $nails_job->price = 400000;

@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Favorite');
     }
 
+    public function logger()
+    {
+        return $this->hasMany('App\Logger');
+    }
+
     // public function toArray($request)
     // {
     //     return parent::toArray($request);

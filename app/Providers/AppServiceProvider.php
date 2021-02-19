@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\LoggerServices;
 use Illuminate\Support\ServiceProvider;
+use Psr\Log\LoggerInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(LoggerInterface::class, function ($app) {
+            return new LoggerServices();
+        });
     }
 
     /**

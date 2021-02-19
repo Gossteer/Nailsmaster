@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\RegisterFormRequest;
 use App\User;
-use Illuminate\Support\Facades\Log;
+use Psr\Log\LoggerInterface;
+
+// use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -15,7 +17,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(RegisterFormRequest $request)
+    public function __invoke(RegisterFormRequest $request, LoggerInterface $logger)
     {
         // $user = User::create(array_merge(
         //     $request->only('email'),
@@ -31,7 +33,12 @@ class RegisterController extends Controller
         // $token->token->expires_at = Carbon::now()->addMonth();
         $token->token->save();
 
-        Log::channel('authregister')->info('Регистрация пользователя', ['user_id' => $user->id]);
+        $logger->log('info', 'Регистрация пользователя', [
+            'type_id' => 'login',
+            'user_id' => $user->id
+            ]);
+
+        // Log::channel('authregister')->info('Регистрация пользователя', ['user_id' => $user->id]);
 
         return response()->json([
             'message' => 'You were successfully registered. Use your email and password to sign in.',

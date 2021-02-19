@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\NailsJobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Psr\Log\LoggerInterface;
+
+// use Illuminate\Support\Facades\Log;
 
 class NailsJobsController extends Controller
 {
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,18 +25,24 @@ class NailsJobsController extends Controller
      */
     public function indexParser()
     {
-        Log::channel('nailsjobsloading')->info('Пользователь выгрузил NailsJobs', ['user_id' => Auth::user()->id]);
+        // Log::channel('nailsjobsloading')->info('Пользователь выгрузил NailsJobs', ['user_id' => Auth::user()->id]);
+        $nailsJobs = array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'address', 'master_point_id', 'latitude','longitude')->where('status', 1)->whereHas('masterPoint', function ($query) {
+            $query->where('status', 1);
+        })->whereHas('masterPoint.master', function ($query) {
+            $query->where('status', 1);
+        })->with([
+            'favorite' => function($query) {
+                $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+               },
+            ])->simplePaginate(15));
+
+        $this->logger->log('info', 'Пользователь выгрузил NailsJobs', [
+            'type_id' => 'loadingnailsjobs',
+            'user_id' => Auth::user()->id
+            ]);
 
         return response()->json([
-            'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'address', 'master_point_id', 'latitude','longitude')->where('status', 1)->whereHas('masterPoint', function ($query) {
-                $query->where('status', 1);
-            })->whereHas('masterPoint.master', function ($query) {
-                $query->where('status', 1);
-            })->with([
-                'favorite' => function($query) {
-                    $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
-                   },
-                ])->simplePaginate(15)),
+            'NailsJobs' => $nailsJobs,
         ], 200);
     }
 
@@ -53,7 +67,12 @@ class NailsJobsController extends Controller
 
     public function redirectToInstagram(\App\Http\Requests\Api\LogRedirectNailsJobsRequest $request)
     {
-        Log::channel('redirecttoinstagram')->info('Пользователь перешёл на:', [
+        // Log::channel('redirecttoinstagram')->info('Пользователь перешёл на:', [
+        //     'user_id' => Auth::user()->id,
+        //     'nails_jobs_id' => (int) $request->nails_jobs_id
+        //     ]);
+        $this->logger->log('info', 'Пользователь перешёл к профилю мастера в инстаграм', [
+            'type_id' => 'redirecttoinstagram',
             'user_id' => Auth::user()->id,
             'nails_jobs_id' => (int) $request->nails_jobs_id
             ]);

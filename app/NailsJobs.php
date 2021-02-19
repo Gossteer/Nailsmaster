@@ -52,6 +52,11 @@ class NailsJobs extends Model
         return $this->belongsTo('App\CategoryNails');
     }
 
+    public function logger()
+    {
+        return $this->hasMany('App\Logger');
+    }
+
     // public function getImageAttribute($value)
     // {
 

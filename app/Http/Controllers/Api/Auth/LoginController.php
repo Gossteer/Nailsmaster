@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+// use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Psr\Log\LoggerInterface;
+// use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -16,7 +17,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, LoggerInterface $logger)
     {
         $credentials = $request->only('email', 'password');
 
@@ -32,7 +33,11 @@ class LoginController extends Controller
 
         $token->token->save();
 
-        Log::channel('authlogin')->info('Авторизация пользователя', ['user_id' => Auth::user()->id]);
+        // Log::channel('authlogin')->info('Авторизация пользователя', ['user_id' => Auth::user()->id]);
+        $logger->log('info', 'Авторизация пользователя', [
+            'type_id' => 'register',
+            'user_id' => Auth::user()->id
+            ]);
 
         return response()->json( [
             'User' => Auth::user(),
