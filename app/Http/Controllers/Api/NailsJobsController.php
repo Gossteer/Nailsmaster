@@ -34,7 +34,7 @@ class NailsJobsController extends Controller
             'favorite' => function($query) {
                 $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
                },
-            ])->simplePaginate(15));
+            ])->simplePaginate(20));
 
         return response()->json([
             'NailsJobs' => $nailsJobs,
