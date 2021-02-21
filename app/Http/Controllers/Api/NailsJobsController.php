@@ -46,6 +46,21 @@ class NailsJobsController extends Controller
         ], 200);
     }
 
+    public function indexForCard()
+    {
+        return response()->json([
+            'NailsJobs' => array('NailsJob' => NailsJobs::select('id','price','image','name','description', 'address', 'master_point_id', 'latitude','longitude')->where('status', 1)->whereHas('masterPoint', function ($query) {
+                $query->where('status', 1);
+            })->whereHas('masterPoint.master', function ($query) {
+                $query->where('status', 1);
+            })->with([
+                'favorite' => function($query) {
+                    $query->select('id', 'user_id', 'nails_jobs_id')->where('user_id', Auth::user()->id);
+                   },
+                ])->paginate(20)),
+        ], 200);
+    }
+
     public function index()
     {
         return response()->json([
