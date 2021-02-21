@@ -24,6 +24,7 @@ Route::post('nailsjobs/store-parser', 'Api\NailsJobsController@storeParser')->na
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::get('nailsjobs', 'NailsJobsController@indexParser')->name('nailsjobs.indexParser');
+        Route::post('nailsjobs/loggerIndex', 'NailsJobsController@loggerIndex')->name('nailsjobs.loggerIndex');
         Route::get('nailsjobs-card', 'NailsJobsController@indexForCard')->name('nailsjobs.indexForCard');
         Route::get('master/{master}', 'MasterController@show')->name('master.show');
         // Route::apiResource('admin', 'AdminController');

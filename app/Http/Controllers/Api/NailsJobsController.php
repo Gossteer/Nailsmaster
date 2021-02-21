@@ -36,11 +36,6 @@ class NailsJobsController extends Controller
                },
             ])->simplePaginate(15));
 
-        $this->logger->log('info', 'Пользователь выгрузил NailsJobs', [
-            'type_id' => 'LoadingNailsJobs',
-            'user_id' => Auth::user()->id
-            ]);
-
         return response()->json([
             'NailsJobs' => $nailsJobs,
         ], 200);
@@ -59,6 +54,14 @@ class NailsJobsController extends Controller
                    },
                 ])->paginate(20)),
         ], 200);
+    }
+
+    public function loggerIndex()
+    {
+        $this->logger->log('info', 'Пользователь выгрузил NailsJobs', [
+            'type_id' => 'LoadingNailsJobs',
+            'user_id' => Auth::user()->id
+            ]);
     }
 
     public function index()
