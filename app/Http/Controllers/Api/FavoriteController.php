@@ -48,7 +48,7 @@ class FavoriteController extends Controller
         $logger->log('info', 'Пользователь добавил ногти в избранное', [
             'type_id' => 'AddFavoriteNailsJobs',
             'user_id' => Auth::user()->id,
-            'nails_jobs_id' => (int) $user_id
+            'nails_jobs_id' => (int) $request->id
             ]);
 
         return response()->json(['id' => $favorite->id], 200);
