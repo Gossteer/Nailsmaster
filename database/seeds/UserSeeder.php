@@ -21,45 +21,50 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $portfolio = new Portfolio();
-        $portfolio->login_instagram = 'login_instagram';
-        $portfolio->description = 'description';
-        $portfolio->save();
 
-        $master = new Master();
-        $master->portfolio_id = $portfolio->id;
-        $master->image = 'public/images/master/manikyur_ombre.png';
-        $master->status = 1;
-        $master->save();
+        User::find(1)->update([
+            'password' =>
+            bcrypt("OniOna232NaNa_GossteerOn")
+        ]);
+        // $portfolio = new Portfolio();
+        // $portfolio->login_instagram = 'login_instagram';
+        // $portfolio->description = 'description';
+        // $portfolio->save();
 
-        $admin = new Admin();
-        $admin->save();
+        // $master = new Master();
+        // $master->portfolio_id = $portfolio->id;
+        // $master->image = 'public/images/master/manikyur_ombre.png';
+        // $master->status = 1;
+        // $master->save();
 
-        $user = new User();
-        $user->email = "admin@admin.com";
-        $user->password = bcrypt("123456789");
-        $user->name = "Бокарев";
-        $user->surname = "Стефан";
-        $user->admin_id = $admin->id;
-        $user->master_id = $master->id;
-        $user->lastname = "Динисович";
-        $user->phone_number = "+79264785354";
-        $user->save();
+        // $admin = new Admin();
+        // $admin->save();
 
-        $masterPoint = new MasterPoint();
-        $masterPoint->master_id = $master->id;
-        $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
-        $masterPoint->latitude = 47.61733;
-        $masterPoint->longitude = -122.1315288;
-        $masterPoint->status = 1;
-        $masterPoint->address = "Жуковский, улица Новых";
-        $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'public/images/master/manikyur_ombre.png';
-        $masterPoint->save();
+        // $user = new User();
+        // $user->email = "admin@admin.com";
+        // $user->password = bcrypt("123456789");
+        // $user->name = "Бокарев";
+        // $user->surname = "Стефан";
+        // $user->admin_id = $admin->id;
+        // $user->master_id = $master->id;
+        // $user->lastname = "Динисович";
+        // $user->phone_number = "+79264785354";
+        // $user->save();
 
-        $category_nail = new CategoryNails();
-        $category_nail->name = 'Длинные';
-        $category_nail->save();
+        // $masterPoint = new MasterPoint();
+        // $masterPoint->master_id = $master->id;
+        // $masterPoint->name = 'Лучшие ноготки (Стефан попросил)';
+        // $masterPoint->latitude = 47.61733;
+        // $masterPoint->longitude = -122.1315288;
+        // $masterPoint->status = 1;
+        // $masterPoint->address = "Жуковский, улица Новых";
+        // $masterPoint->description = 'Выбирай нас';
+        // $masterPoint->image = 'public/images/master/manikyur_ombre.png';
+        // $masterPoint->save();
+
+        // $category_nail = new CategoryNails();
+        // $category_nail->name = 'Длинные';
+        // $category_nail->save();
 
         // $nails_job = new NailsJobs();
         // $nails_job->price = 400000;
@@ -318,55 +323,55 @@ class UserSeeder extends Seeder
         // $nails_job->status = 1;
         // $nails_job->save();
 
-        $category_nail = new CategoryNails();
-        $category_nail->name = 'Короткие';
-        $category_nail->save();
+        // $category_nail = new CategoryNails();
+        // $category_nail->name = 'Короткие';
+        // $category_nail->save();
 
-        $portfolio = new Portfolio();
-        $portfolio->login_instagram = 'antonNoInstagram';
-        $portfolio->description = 'Стаж работы овер 100лет';
-        $portfolio->save();
+        // $portfolio = new Portfolio();
+        // $portfolio->login_instagram = 'antonNoInstagram';
+        // $portfolio->description = 'Стаж работы овер 100лет';
+        // $portfolio->save();
 
-        $master = new Master();
-        $master->image = 'public/images/master/manikyur_ombre.png';
-        $master->portfolio_id = $portfolio->id;
-        $master->status = 1;
-        $master->save();
+        // $master = new Master();
+        // $master->image = 'public/images/master/manikyur_ombre.png';
+        // $master->portfolio_id = $portfolio->id;
+        // $master->status = 1;
+        // $master->save();
 
-        $user = new User();
-        $user->email = "admin1@admin.com";
-        $user->password = bcrypt("123456789");
-        $user->name = "Антон";
-        $user->surname = "Игнатьев";
-        $user->master_id = $master->id;
-        $user->lastname = "Александрович";
-        $user->phone_number = "+79256785354";
-        $user->save();
+        // $user = new User();
+        // $user->email = "admin1@admin.com";
+        // $user->password = bcrypt("123456789");
+        // $user->name = "Антон";
+        // $user->surname = "Игнатьев";
+        // $user->master_id = $master->id;
+        // $user->lastname = "Александрович";
+        // $user->phone_number = "+79256785354";
+        // $user->save();
 
-        $masterPoint = new MasterPoint();
-        $masterPoint->master_id = $master->id;
-        $masterPoint->name = 'Не самые лучшие, но сойдёт';
-        $masterPoint->latitude = 49.61733;
-        $masterPoint->longitude = -120.1315288;
-        $masterPoint->status = 1;
-        $masterPoint->address = "Москва, улица Новых черёмушков";
-        $masterPoint->description = 'Выбирай нас';
-        $masterPoint->image = 'public/images/master/19449275071578985154.jpg';
-        $masterPoint->save();
+        // $masterPoint = new MasterPoint();
+        // $masterPoint->master_id = $master->id;
+        // $masterPoint->name = 'Не самые лучшие, но сойдёт';
+        // $masterPoint->latitude = 49.61733;
+        // $masterPoint->longitude = -120.1315288;
+        // $masterPoint->status = 1;
+        // $masterPoint->address = "Москва, улица Новых черёмушков";
+        // $masterPoint->description = 'Выбирай нас';
+        // $masterPoint->image = 'public/images/master/19449275071578985154.jpg';
+        // $masterPoint->save();
 
-        $recording_time = new RecordingTime();
-        $recording_time->time = date('Y-m-d H:i:s');
-        $recording_time->master_point_id = $masterPoint ->id;
-        $recording_time->save();
+        // $recording_time = new RecordingTime();
+        // $recording_time->time = date('Y-m-d H:i:s');
+        // $recording_time->master_point_id = $masterPoint ->id;
+        // $recording_time->save();
 
-        $user = new User();
-        $user->email = "user@user.com";
-        $user->password = bcrypt("123456789");
-        $user->name = "Алексадра";
-        $user->surname = "Орешкина";
-        $user->lastname = "Антоновна";
-        $user->phone_number = "+79264785355";
-        $user->save();
+        // $user = new User();
+        // $user->email = "user@user.com";
+        // $user->password = bcrypt("123456789");
+        // $user->name = "Алексадра";
+        // $user->surname = "Орешкина";
+        // $user->lastname = "Антоновна";
+        // $user->phone_number = "+79264785355";
+        // $user->save();
 
 
         // $nails_job = new NailsJobs();
@@ -389,13 +394,13 @@ class UserSeeder extends Seeder
         // $favorite->master_point_id = $masterPoint->id;
         // $favorite->save();
 
-        $user = new User();
-        $user->email = "user1@user1.com";
-        $user->password = bcrypt("123456789");
-        $user->name = "Человек";
-        $user->surname = "Клиентович";
-        $user->phone_number = "+79264784355";
-        $user->save();
+        // $user = new User();
+        // $user->email = "user1@user1.com";
+        // $user->password = bcrypt("123456789");
+        // $user->name = "Человек";
+        // $user->surname = "Клиентович";
+        // $user->phone_number = "+79264784355";
+        // $user->save();
 
         // $favorite = new Favorite();
         // $favorite->user_id = $user->id;
