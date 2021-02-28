@@ -22,10 +22,6 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        User::find(1)->update([
-            'password' =>
-            bcrypt("OniOna232NaNa_GossteerOn")
-        ]);
         // $portfolio = new Portfolio();
         // $portfolio->login_instagram = 'login_instagram';
         // $portfolio->description = 'description';
