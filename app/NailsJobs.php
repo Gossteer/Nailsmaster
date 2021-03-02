@@ -57,11 +57,11 @@ class NailsJobs extends Model
         return $this->hasMany('App\Logger');
     }
 
-    // public function getImageAttribute($value)
-    // {
+    public function getImageAttribute($value)
+    {
 
-    //     return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
+        return 'http://nailsmasterstest.com.xsph.ru/'.Storage::url($value);
 
-    // }
+    }
 
 }
