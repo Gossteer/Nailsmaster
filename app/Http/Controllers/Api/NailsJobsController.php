@@ -121,10 +121,12 @@ class NailsJobsController extends Controller
     public function storeParser(Request $request)
     {
         if (!NailsJobs::where('instagram', $request->instagram)->exists()) {
+            $key = NailsJobs::count() - 1;
+
             NailsJobs::create([
                 'instagram' => $request->instagram,
                 'name' => $request->instagram,
-                'image' => $request->image,
+                'image' => "images/image$key.png",
                 'category_nail_id' => 1,
                 'master_point_id' => 1,
                 'status' => 1,
@@ -135,8 +137,7 @@ class NailsJobsController extends Controller
             ]);
         }
 
-
-        return response()->json();
+        return response()->json(['key' => $key]);
     }
 
     /**
